@@ -3,7 +3,7 @@
   <aside class="sidebar">
     <div class="sidebar-profile">
       <div class="sidebar-avatar">
-        <lucide-icon name="user"></lucide-icon>
+        <lucide-icon name="User"></lucide-icon>
       </div>
       <div class="sidebar-student-name">{{ studentName }}</div>
       <hr class="sidebar-divider" />
@@ -24,7 +24,7 @@
     </nav>
     <div class="sidebar-logout">
       <hr>
-      <a class="sidebar-link">
+      <a class="sidebar-link" (click)="logout()">
         <lucide-icon name="log-out" class="sidebar-icon"></lucide-icon>
         <span>Logout</span>
       </a>
@@ -37,7 +37,7 @@
   <aside class="sidebar sidebar-drawer" [class.open]="sidebarOpen">
     <div class="sidebar-profile">
       <div class="sidebar-avatar">
-        <lucide-icon name="user"></lucide-icon>
+        <lucide-icon name="User"></lucide-icon>
       </div>
       <div class="sidebar-student-name">{{ studentName }}</div>
       <hr class="sidebar-divider" />
@@ -58,7 +58,7 @@
     </nav>
     <div class="sidebar-logout">
       <hr>
-      <a class="sidebar-link" (click)="closeSidebar()">
+      <a class="sidebar-link" (click)="logout()">
         <lucide-icon name="log-out" class="sidebar-icon"></lucide-icon>
         <span>Logout</span>
       </a>

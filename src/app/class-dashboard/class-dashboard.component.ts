@@ -86,4 +86,9 @@ export class ClassDashboardComponent {
   toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
   }
+
+  logout() {
+    this.router.navigate(['/login']);
+  }
+
 }

@@ -1,4 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --maroon: #AE1039;
+  --maroon-dark: #880B17;
+  --blue: #2E3679;
+  --black: #212529;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: var(--black);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+button {
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+}
+
+input {
+  font-family: 'Poppins', sans-serif;
+}
 
 html, body {
   margin: 0;

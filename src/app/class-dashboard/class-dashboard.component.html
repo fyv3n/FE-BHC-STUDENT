@@ -1,0 +1,115 @@
+<div class="dashboard-container">
+  <!-- Persistent Sidebar for Desktop -->
+  <aside class="sidebar">
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar">
+        <lucide-icon name="user"></lucide-icon>
+      </div>
+      <div class="sidebar-student-name">{{ studentName }}</div>
+      <hr class="sidebar-divider" />
+    </div>
+    <nav class="sidebar-nav">
+      <a class="sidebar-link active">
+        <lucide-icon name="home" class="sidebar-icon"></lucide-icon>
+        <span>Classes</span>
+      </a>
+      <a class="sidebar-link">
+        <lucide-icon name="newspaper" class="sidebar-icon"></lucide-icon>
+        <span>News</span>
+      </a>
+      <a class="sidebar-link">
+        <lucide-icon name="message-circle" class="sidebar-icon"></lucide-icon>
+        <span>Forums</span>
+      </a>
+    </nav>
+    <div class="sidebar-logout">
+      <hr>
+      <a class="sidebar-link">
+        <lucide-icon name="log-out" class="sidebar-icon"></lucide-icon>
+        <span>Logout</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Sidebar Drawer Overlay (Mobile) -->
+  <div class="sidebar-overlay" *ngIf="sidebarOpen" (click)="closeSidebar()"></div>
+  <!-- Sidebar Drawer (Mobile) -->
+  <aside class="sidebar sidebar-drawer" [class.open]="sidebarOpen">
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar">
+        <lucide-icon name="user"></lucide-icon>
+      </div>
+      <div class="sidebar-student-name">{{ studentName }}</div>
+      <hr class="sidebar-divider" />
+    </div>
+    <nav class="sidebar-nav">
+      <a class="sidebar-link active" (click)="closeSidebar()">
+        <lucide-icon name="home" class="sidebar-icon"></lucide-icon>
+        <span>Classes</span>
+      </a>
+      <a class="sidebar-link" (click)="closeSidebar()">
+        <lucide-icon name="newspaper" class="sidebar-icon"></lucide-icon>
+        <span>News</span>
+      </a>
+      <a class="sidebar-link" (click)="closeSidebar()">
+        <lucide-icon name="message-circle" class="sidebar-icon"></lucide-icon>
+        <span>Forums</span>
+      </a>
+    </nav>
+    <div class="sidebar-logout">
+      <hr>
+      <a class="sidebar-link" (click)="closeSidebar()">
+        <lucide-icon name="log-out" class="sidebar-icon"></lucide-icon>
+        <span>Logout</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <button class="burger-menu" (click)="toggleSidebar()">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AE1039" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="top-bar-date">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+        {{ currentDateTime | date: 'EEEE, MMMM d, yyyy, hh:mm:ss a' }}
+      </div>
+    </header>
+
+    <!-- Main Section -->
+    <section class="class-section">
+      <div class="class-header">
+        <h1>My Classroom</h1>
+        <button class="class-schedule-btn">
+          <lucide-icon name="calendar"></lucide-icon> Class Schedule
+        </button>
+      </div>
+      <div class="classes-bg-text">CLASSES</div>
+      <div class="class-search-bar">
+        <input
+          type="text"
+          placeholder="Search Class..."
+          [(ngModel)]="searchTerm"
+        />
+        <button>
+          <lucide-icon name="search"></lucide-icon>
+        </button>
+      </div>
+      <div class="class-grid">
+        <div class="class-card" *ngFor="let cls of filteredClasses">
+          <div class="class-card-top">
+            <div class="class-code">Class Code: {{ cls.code }}</div>
+            <div class="class-subject">{{ cls.subject }}</div>
+            <div class="class-schedule">{{ cls.schedule }}</div>
+            <div class="class-room">{{ cls.room }}</div>
+          </div>
+          <div class="class-card-bottom">
+            <button (click)="enterClass(cls.code)">Enter ›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

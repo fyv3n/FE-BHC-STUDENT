@@ -35,20 +35,20 @@
         <img src="assets/BHE-LOGO.png" alt="Bataan Heroes College Logo" />
       </div>
       <div class="login-title">Bataan Heroes College<br>Student Login</div>
-      <form>
+      <form (submit)="onLogin($event)">
         <div class="input-group">
           <span class="input-icon">
-            <img src="assets/user-pen.svg" alt="User" />
+            <lucide-icon name="user" color="#212529"></lucide-icon>
           </span>
           <input type="text" placeholder="Type your username" />
         </div>
         <div class="input-group">
           <span class="input-icon">
-            <img src="assets/lock.svg" alt="Password" />
+            <lucide-icon name="lock" color="#212529"></lucide-icon>
           </span>
-          <input type="password" placeholder="Type your password" />
-          <span class="toggle-password">
-            <img src="assets/eye.svg" alt="Show Password" />
+          <input [type]="showPassword ? 'text' : 'password'" placeholder="Type your password" />
+          <span class="toggle-password" (click)="togglePasswordVisibility()">
+            <lucide-icon [name]="showPassword ? 'eye-off' : 'eye'"></lucide-icon>
           </span>
         </div>
         <button type="submit" class="login-btn">LOGIN</button>

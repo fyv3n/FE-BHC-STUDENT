@@ -26,7 +26,7 @@ export class ClassDashboardComponent {
       schedule: 'Wed 1:00 PM – 4:00 PM',
       room: 'Room #: 100'
     },
-    // Add more classes as needed
+
     {
       code: '234567',
       subject: 'Math 101',
@@ -89,6 +89,10 @@ export class ClassDashboardComponent {
 
   logout() {
     this.router.navigate(['/login']);
+  }
+
+  forumPage(){
+    this.router.navigate(['/form'])
   }
 
 }

@@ -3,29 +3,24 @@
   <aside class="sidebar">
     <div class="sidebar-profile">
       <div class="sidebar-avatar">
-        <lucide-icon name="UserPen"></lucide-icon>
       </div>
       <div class="sidebar-student-name">{{ studentName }}</div>
       <hr class="sidebar-divider" />
     </div>
     <nav class="sidebar-nav">
+      <a class="sidebar-link" (click)="todolist()">
+        <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Todo</span>
+      </a>
       <a class="sidebar-link active">
-        <lucide-icon name="Home" class="sidebar-icon"></lucide-icon>
+        <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Classes</span>
-      </a>
-      <a class="sidebar-link">
-        <lucide-icon name="newspaper" class="sidebar-icon"></lucide-icon>
-        <span>News</span>
-      </a>
-      <a class="sidebar-link" (click)="forumPage()">
-        <lucide-icon name="message-circle" class="sidebar-icon"></lucide-icon>
-        <span>Forums</span>
       </a>
     </nav>
     <div class="sidebar-logout">
       <hr>
       <a class="sidebar-link" (click)="logout()">
-        <lucide-icon name="log-out" class="sidebar-icon"></lucide-icon>
+        <app-icon name="log-out" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Logout</span>
       </a>
     </div>
@@ -37,29 +32,24 @@
   <aside class="sidebar sidebar-drawer" [class.open]="sidebarOpen">
     <div class="sidebar-profile">
       <div class="sidebar-avatar">
-        <lucide-icon name="UserPen"></lucide-icon>
       </div>
       <div class="sidebar-student-name">{{ studentName }}</div>
       <hr class="sidebar-divider" />
     </div>
     <nav class="sidebar-nav">
+      <a class="sidebar-link" (click)="closeSidebar()">
+        <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Todo</span>
+      </a>
       <a class="sidebar-link active" (click)="closeSidebar()">
-        <lucide-icon name="Home" class="sidebar-icon"></lucide-icon>
+        <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Classes</span>
-      </a>
-      <a class="sidebar-link" (click)="closeSidebar()">
-        <lucide-icon name="newspaper" class="sidebar-icon"></lucide-icon>
-        <span>News</span>
-      </a>
-      <a class="sidebar-link" (click)="closeSidebar()">
-        <lucide-icon name="message-circle" class="sidebar-icon"></lucide-icon>
-        <span>Forums</span>
       </a>
     </nav>
     <div class="sidebar-logout">
       <hr>
       <a class="sidebar-link" (click)="logout()">
-        <lucide-icon name="log-out" class="sidebar-icon"></lucide-icon>
+        <app-icon name="log-out" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Logout</span>
       </a>
     </div>
@@ -73,7 +63,7 @@
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AE1039" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <div class="top-bar-date">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+        <app-icon name="calendar" [size]="16" color="#888"></app-icon>
         {{ currentDateTime | date: 'EEEE, MMMM d, yyyy, hh:mm:ss a' }}
       </div>
     </header>
@@ -82,8 +72,9 @@
     <section class="class-section">
       <div class="class-header">
         <h1>My Classroom</h1>
-        <button class="class-schedule-btn">
-          <lucide-icon name="calendar"></lucide-icon> Class Schedule
+        <button class="class-schedule-btn" (click)="viewSchedule()">
+          <app-icon name="calendar" [size]="22" color="#212529"></app-icon>
+          Class Schedule
         </button>
       </div>
       <div class="classes-bg-text">CLASSES</div>
@@ -94,7 +85,7 @@
           [(ngModel)]="searchTerm"
         />
         <button>
-          <lucide-icon name="search"></lucide-icon>
+          <app-icon name="search" [size]="22" color="#FFFFFF"></app-icon>
         </button>
       </div>
       <div class="class-grid">

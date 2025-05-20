@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { LucideAngularModule } from 'lucide-angular';
 import { Router } from '@angular/router';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-login',
-  imports: [LucideAngularModule],
+  standalone: true,
+  imports: [IconComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

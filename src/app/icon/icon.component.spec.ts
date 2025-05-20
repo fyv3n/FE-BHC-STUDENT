@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormPageComponent } from './form-page.component';
+import { IconComponent } from './icon.component';
 
-describe('FormPageComponent', () => {
-  let component: FormPageComponent;
-  let fixture: ComponentFixture<FormPageComponent>;
+describe('IconComponent', () => {
+  let component: IconComponent;
+  let fixture: ComponentFixture<IconComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FormPageComponent]
+      imports: [IconComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FormPageComponent);
+    fixture = TestBed.createComponent(IconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

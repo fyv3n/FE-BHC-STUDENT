@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LucideAngularModule } from 'lucide-angular';
 import { CommonModule, DatePipe } from '@angular/common';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-class-dashboard',
   standalone: true,
   imports: [
     FormsModule,
-    LucideAngularModule,
     CommonModule,
-    DatePipe
+    DatePipe,
+    IconComponent
   ],
   templateUrl: './class-dashboard.component.html',
   styleUrls: ['./class-dashboard.component.css']
@@ -93,6 +93,14 @@ export class ClassDashboardComponent {
 
   forumPage(){
     this.router.navigate(['/form'])
+  }
+
+  viewSchedule(): void {
+    this.router.navigate(['/class-schedule']);
+  }
+
+  todolist(): void {
+    this.router.navigate(['/todolist']);
   }
 
 }

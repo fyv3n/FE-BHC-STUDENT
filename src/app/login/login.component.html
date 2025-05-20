@@ -38,17 +38,21 @@
       <form (submit)="onLogin($event)">
         <div class="input-group">
           <span class="input-icon">
-            <lucide-icon name="UserPen" color="#212529"></lucide-icon>
+            <app-icon name="user-pen" alt="User" color="#212529"></app-icon>
           </span>
           <input type="text" placeholder="Type your Username" />
         </div>
         <div class="input-group">
           <span class="input-icon">
-            <lucide-icon name="Lock" color="#212529"></lucide-icon>
+            <app-icon name="lock" alt="Lock" color="#212529"></app-icon>
           </span>
           <input [type]="showPassword ? 'text' : 'password'" placeholder="Type your password" />
           <span class="toggle-password" (click)="togglePasswordVisibility()">
-            <lucide-icon [name]="showPassword ? 'eye-off' : 'eye'"></lucide-icon>
+            <app-icon 
+              [name]="showPassword ? 'eye-closed' : 'eye'" 
+              [alt]="showPassword ? 'Hide password' : 'Show password'"
+              color="#888">
+            </app-icon>
           </span>
         </div>
         <button type="submit" class="login-btn">LOGIN</button>

@@ -1,0 +1,90 @@
+.schedule-container {
+  padding: 20px;
+  background-color: #f6f6f6;
+  min-height: 100vh;
+}
+
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.schedule-header h1 {
+  color: #212529;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #AE1039;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.back-btn:hover {
+  background-color: rgba(174, 16, 57, 0.1);
+}
+
+@media (max-width: 768px) {
+  .schedule-container {
+    padding: 12px;
+  }
+  .schedule-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .week-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+  .day-card {
+    min-width: 0;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.day-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 24px;
+  min-height: 250px;
+  border-top: 3px solid #AE1039;
+}
+
+.day-header {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #AE1039;
+}
+
+.class-item {
+  margin-bottom: 16px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.no-class {
+  color: #888;
+  margin-top: 24px;
+}

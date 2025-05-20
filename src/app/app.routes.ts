@@ -5,6 +5,7 @@ import { FormPageComponent } from './form-page/form-page.component';
 
 
 export const routes: Routes = [
+  { path: '', component:LoginComponent},
   { path: 'login', component: LoginComponent },
   { path: 'class-dashboard', component: ClassDashboardComponent },
   { path: 'form-page', component: FormPageComponent },

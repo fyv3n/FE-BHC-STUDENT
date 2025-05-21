@@ -225,7 +225,7 @@ body {
 
 
 .class-schedule-btn:hover {
-  background-color: #f3f3f3;
+  background-color: #d8d8d8;
   color: #212529;
   border-color: #212529;
 }
@@ -364,7 +364,7 @@ body {
 }
 
 .class-card-bottom button:hover {
-  background: #f3f3f3;
+  background-color: #d8d8d8;
   color: #212529;
   border: 2px solid #212529;
 }
@@ -656,8 +656,4 @@ body {
   font-family: 'Poppins', Arial, sans-serif;
   background: var(--maroon);
   color: var(--sidebar-text);
-}
-
-.sidebar-link, .sidebar-student-name {
-  font-family: 'Poppins', Arial, sans-serif;
 }

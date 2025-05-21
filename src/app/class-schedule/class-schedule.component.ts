@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LucideAngularModule } from 'lucide-angular';
 import { Router } from '@angular/router';
 import { IconComponent } from '../icon/icon.component';
 

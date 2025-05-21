@@ -61,15 +61,6 @@ body {
   margin: 0 auto 10px auto;
 }
 
-.sidebar-avatar lucide-icon {
-  width: 36px;
-  height: 36px;
-  color: #fff !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .sidebar-student-name {
   font-size: 13px;
   font-weight: 700;
@@ -138,11 +129,6 @@ body {
   fill: #fff !important;
 }
 
-.sidebar-link .sidebar-icon,
-.sidebar-avatar lucide-icon {
-  color: #fff !important;
-  fill: #fff !important;
-}
 
 .sidebar-divider {
   width: 80%;
@@ -237,15 +223,6 @@ body {
   transition: background 0.2s, color 0.2s, border 0.2s;
 }
 
-.class-schedule-btn lucide-icon {
-  width: 22px;
-  height: 22px;
-  color: #212529 !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-}
 
 .class-schedule-btn:hover {
   background-color: #f3f3f3;
@@ -450,14 +427,7 @@ body {
     color: #fff !important;
     fill: #fff !important;
   }
-  .sidebar-link .sidebar-icon,
-  .sidebar-avatar lucide-icon {
-    font-size: 28px;
-    width: 28px;
-    height: 28px;
-    color: #fff !important;
-    fill: #fff !important;
-  }
+
   .sidebar-logout {
     margin-top: auto;
     display: flex;
@@ -531,14 +501,7 @@ body {
     color: #fff !important;
     fill: #fff !important;
   }
-  .sidebar-link .sidebar-icon,
-  .sidebar-avatar lucide-icon {
-    font-size: 28px;
-    width: 28px;
-    height: 28px;
-    color: #fff !important;
-    fill: #fff !important;
-  }
+
   .sidebar-profile,
   .sidebar-divider {
     display: block !important;

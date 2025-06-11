@@ -1,4 +1,4 @@
-<div class="coursedashboardContainer">
+<div class="dashboard-container">
   <!-- Persistent Sidebar for Desktop -->
   <aside class="sidebar">
     <div class="sidebar-profile">
@@ -9,18 +9,18 @@
     </div>
     <nav class="sidebar-nav">
       <a class="sidebar-link" (click)="todolist()">
-        <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Todo"></app-icon>
         <span>Todo</span>
       </a>
-      <a class="sidebar-link active">
-        <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+      <a class="sidebar-link active" (click)="classDashboard()">
+        <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Classes"></app-icon>
         <span>Classes</span>
       </a>
     </nav>
     <div class="sidebar-logout">
       <hr>
       <a class="sidebar-link" (click)="logout()">
-        <app-icon name="log-out" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <app-icon name="log-out" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Logout"></app-icon>
         <span>Logout</span>
       </a>
     </div>
@@ -37,25 +37,24 @@
       <hr class="sidebar-divider" />
     </div>
     <nav class="sidebar-nav">
-      <a class="sidebar-link" (click)="closeSidebar()">
-        <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+      <a class="sidebar-link" (click)="todolist(); closeSidebar()">
+        <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Todo Icon"></app-icon>
         <span>Todo</span>
       </a>
-      <a class="sidebar-link active" (click)="classDashboard()">
-        <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+      <a class="sidebar-link active" (click)="classDashboard(); closeSidebar()">
+        <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Classes Icon"></app-icon>
         <span>Classes</span>
       </a>
     </nav>
     <div class="sidebar-logout">
       <hr>
       <a class="sidebar-link" (click)="logout()">
-        <app-icon name="log-out" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <app-icon name="log-out" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Logout Icon"></app-icon>
         <span>Logout</span>
       </a>
     </div>
   </aside>
 
-  <!-- Main Content -->
   <div class="main-content">
     <!-- Top Bar -->
     <header class="top-bar">
@@ -63,13 +62,277 @@
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AE1039" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <div class="top-bar-date">
-        <app-icon name="calendar" [size]="16" color="#888"></app-icon>
+        <app-icon name="calendar" [size]="16" color="#888" alt="Calendar Icon"></app-icon>
         {{ currentDateTime | date: 'EEEE, MMMM d, yyyy, hh:mm:ss a' }}
       </div>
     </header>
 
+    <!-- Main Section -->
 
-<div class="courseContent">
-    <h2>Math 101</h2>
+    <div class="course-banner">
+      <div class="course-banner-content">
+        <h1>{{ selectedClass?.code }}</h1>
+        <h2>{{ selectedClass?.subject }}</h2>
+        <p>{{ selectedClass?.schedule }}</p>
+        <p>{{ selectedClass?.room }}</p>
+      </div>
+    </div>
 
-</div>
+    <!-- Class Feed Section -->
+    <div class="content-section">
+      <div class="feed-container">
+        <!-- Course Navigation -->
+        <nav class="course-nav">
+          <div class="nav-links">
+            <a [class.active]="activeTab === 'classFeed'" (click)="setActiveTab('classFeed')">Class Feed</a>
+            <a [class.active]="activeTab === 'activitiesResources'" (click)="setActiveTab('activitiesResources')">Activities/Resources</a>
+            <a [class.active]="activeTab === 'studentList'" (click)="setActiveTab('studentList')">Student List</a>
+          </div>
+          <a class="go-back-btn" (click)="coursedashboard()">
+            <app-icon name="arrow-left" [size]="16" color="#666" alt="Back Arrow Icon"></app-icon>
+            Go Back
+          </a>
+        </nav>
+
+        <!-- Main Content Area -->
+        <div class="feed-content" *ngIf="activeTab === 'classFeed'">
+          <!-- Left Column: Posts -->
+          <div class="feed-main">
+            <!-- Create Post -->
+            <div class="create-post">
+              <div class="avatar"></div>
+              <div class="create-post-input">
+                <textarea 
+                  placeholder="Write something..." 
+                  [(ngModel)]="newPostContent"
+                  rows="3"></textarea>
+                <div class="create-post-actions">
+                  <div class="post-attachments">
+                    <button>
+                      <app-icon name="image" [size]="20" color="#666" alt="Image Attachment Icon"></app-icon>
+                    </button>
+                    <button>
+                      <app-icon name="film" [size]="20" color="#666" alt="Video Attachment Icon"></app-icon>
+                    </button>
+                    <button>
+                      <app-icon name="paperclip" [size]="20" color="#666" alt="File Attachment Icon"></app-icon>
+                    </button>
+                  </div>
+                  <button class="post-button" (click)="createPost()">Post</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Posts List -->
+            <div class="posts-list">
+              <div class="post-item" *ngFor="let post of posts">
+                <div class="post-header">
+                  <div class="post-author">
+                    <div class="avatar" [class.teacher-post]="post.author.role === 'teacher'"></div>
+                    <div class="author-info">
+                      <div class="author-name">{{ post.author.name }}</div>
+                      <div class="post-date">{{ post.datePosted | date:'MMM d, y, h:mm a' }}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="post-content">
+                  {{ post.content }}
+                </div>
+
+                <div class="post-attachments-list" *ngIf="post.attachments && post.attachments.length > 0">
+                  <div class="attachment-item" *ngFor="let attachment of post.attachments">
+                    <app-icon [name]="getAttachmentIcon(attachment.type)" [size]="20" color="#666" alt="Attachment Icon"></app-icon>
+                    <span class="attachment-name">{{ attachment.name }}</span>
+                  </div>
+                </div>
+
+                <div class="post-actions">
+                  <button class="action-button">
+                    <app-icon name="thumbs-up" [size]="18" color="#666" alt="Like Icon"></app-icon>
+                    <span>{{ post.likes }}</span>
+                  </button>
+                  <button class="action-button" (click)="toggleComments(post.id)">
+                    <app-icon name="message-square" [size]="18" color="#666" alt="Comment Icon"></app-icon>
+                    <span>{{ post.comments }}</span>
+                  </button>
+                </div>
+
+                <!-- Comments Section -->
+                <div class="comments-section" *ngIf="activeCommentPostId === post.id">
+                  <div class="comments-list" *ngIf="post.commentsList && post.commentsList.length > 0">
+                    <div class="comment-item" *ngFor="let comment of post.commentsList">
+                      <div class="comment-header">
+                        <div class="comment-author">
+                          <div class="avatar small" [class.teacher-post]="comment.author.role === 'teacher'"></div>
+                          <div class="author-info">
+                            <div class="author-name">{{ comment.author.name }}</div>
+                            <div class="comment-date">{{ comment.datePosted | date:'MMM d, y, h:mm a' }}</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="comment-content">
+                        {{ comment.content }}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Add Comment -->
+                  <div class="add-comment">
+                    <div class="avatar small"></div>
+                    <div class="comment-input">
+                      <textarea 
+                        placeholder="Write a comment..." 
+                        [(ngModel)]="newCommentText"
+                        rows="2"></textarea>
+                      <button 
+                        class="comment-button" 
+                        [disabled]="!newCommentText.trim()"
+                        (click)="addComment(post.id)">
+                        Comment
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Activities & Resources -->
+          <div class="feed-sidebar">
+            <!-- Activities Section -->
+            <div class="sidebar-section">
+              <h3 class="sidebar-title">List of Activities</h3>
+              <div class="activities-list" *ngIf="activities.length > 0; else noActivities">
+                <div class="activity-item" *ngFor="let activity of activities" (click)="viewActivity(activity.id)" style="cursor: pointer;">
+                  <div class="activity-icon">
+                    <app-icon name="notebook-pen" [size]="20" color="#666" [alt]="activity.type + ' Icon'"></app-icon>
+                  </div>
+                  <div class="activity-details">
+                    <div class="activity-title">{{ activity.title }}</div>
+                    <div class="activity-info">
+                      <span class="activity-date">Due: {{ activity.dueDate | date:'MMM d, y, h:mm a' }}</span>
+                      <span class="activity-status" [class]="activity.status">{{ activity.status }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ng-template #noActivities>
+                <div class="no-content">
+                  No activities/exams posted! 😕
+                </div>
+              </ng-template>
+            </div>
+
+            <!-- Resources Section -->
+            <div class="sidebar-section">
+              <h3 class="sidebar-title">Resources</h3>
+              <div class="resources-list">
+                <div class="resource-item" *ngFor="let resource of resources">
+                  <div class="resource-icon">
+                    <app-icon name="file" [size]="20" color="#666" [alt]="resource.type + ' Icon'"></app-icon>
+                  </div>
+                  <div class="resource-details">
+                    <div class="resource-title">{{ resource.title }}</div>
+                    <div class="resource-date">
+                      Date Posted: {{ resource.datePosted | date:'MMMM d, yyyy' }}
+                      <span *ngIf="resource.fileSize" class="resource-size">({{ resource.fileSize }})</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activities/Resources Tab Content -->
+        <div class="tab-content" *ngIf="activeTab === 'activitiesResources'">
+          <div class="section-header">
+            <h3>List of Activities</h3>
+          </div>
+          
+          <div class="activities-list" *ngIf="activities.length > 0; else noActivities">
+            <div class="activity-item" *ngFor="let activity of activities" (click)="viewActivity(activity.id)" style="cursor: pointer;">
+              <div class="activity-icon">
+                <app-icon name="notebook-pen" [size]="20" color="#666" [alt]="activity.type + ' Icon'"></app-icon>
+              </div>
+              <div class="activity-details">
+                <div class="activity-title">{{ activity.title }}</div>
+                <div class="activity-info">
+                  <span class="activity-date">Due: {{ activity.dueDate | date:'MMM d, y, h:mm a' }}</span>
+                  <span class="activity-status" [class]="activity.status">{{ activity.status }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <ng-template #noActivities>
+            <div class="no-content">
+              No activities/exams posted! 😕
+            </div>
+          </ng-template>
+
+          <div class="section-header">
+            <h3>Resources</h3>
+          </div>
+          <div class="resources-list">
+            <div class="resource-item" *ngFor="let resource of resources">
+              <div class="resource-icon">
+                <app-icon [name]="getAttachmentIcon(resource.type)" [size]="20" color="#666" [alt]="resource.type + ' Icon'"></app-icon>
+              </div>
+              <div class="resource-details">
+                <div class="resource-title">{{ resource.title }}</div>
+                <div class="resource-date">
+                  Date Posted: {{ resource.datePosted | date:'MMMM d, yyyy' }}
+                  <span *ngIf="resource.fileSize" class="resource-size">({{ resource.fileSize }})</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Student List Tab Content -->
+        <div class="tab-content" *ngIf="activeTab === 'studentList'">
+          <!-- Teacher Section -->
+          <div class="section-header">
+            <h3>Professor</h3>
+          </div>
+          <div class="teacher-card">
+            <div class="teacher-avatar">
+              <div class="avatar" [style.backgroundImage]="teacher.avatar ? 'url(' + teacher.avatar + ')' : null"></div>
+            </div>
+            <div class="teacher-details">
+              <div class="teacher-name">{{ teacher.name }}</div>
+              <div class="teacher-title">{{ teacher.title }}</div>
+              <div class="teacher-info">
+                <span class="teacher-department">{{ teacher.department }}</span>
+                <span class="teacher-email">{{ teacher.email }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-divider"></div>
+
+          <!-- Students Section -->
+          <div class="section-header">
+            <h3>Students</h3>
+          </div>
+          <div class="students-list">
+            <div class="student-item" *ngFor="let student of students">
+              <div class="student-avatar">
+                <div class="avatar" [style.backgroundImage]="student.avatar ? 'url(' + student.avatar + ')' : null"></div>
+              </div>
+              <div class="student-details">
+                <div class="student-name">{{ student.name }}</div>
+                <div class="student-info">
+                  <span class="student-number">{{ student.studentNumber }}</span>
+                  <span class="student-email">{{ student.email }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

@@ -70,8 +70,8 @@ export class ClassDashboardComponent {
     this.router.navigate(['/todolist']);
   }
 
-  coursedashboard(): void {
-    this.router.navigate(['/course-dashboard'])
+  coursedashboard(code: string): void {
+    this.router.navigate(['/coursedashboard', code])
   }
 
 }

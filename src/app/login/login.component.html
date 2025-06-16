@@ -32,21 +32,31 @@
   <div class="login-panel">
     <div class="login-card">
       <div class="login-logo-placeholder">
-        <img src="assets/BHE-LOGO.png" alt="Bataan Heroes College Logo" />
+        <img src="/assets/BHE-LOGO.png" alt="Bataan Heroes College Logo" />
       </div>
       <div class="login-title">Bataan Heroes College<br>Student Login</div>
-      <form (submit)="onLogin($event)">
+      <form (submit)="onLogin($event)" novalidate>
         <div class="input-group">
           <span class="input-icon">
             <app-icon name="user-pen" alt="User" color="#212529"></app-icon>
           </span>
-          <input type="text" placeholder="Type your Username" />
+          <input 
+            type="text" 
+            name="username" 
+            placeholder="Type your Username" 
+            autocomplete="username" 
+            required />
         </div>
         <div class="input-group">
           <span class="input-icon">
             <app-icon name="lock" alt="Lock" color="#212529"></app-icon>
           </span>
-          <input [type]="showPassword ? 'text' : 'password'" placeholder="Type your password" />
+          <input 
+            [type]="showPassword ? 'text' : 'password'" 
+            name="password"
+            placeholder="Type your password" 
+            autocomplete="current-password" 
+            required />
           <span class="toggle-password" (click)="togglePasswordVisibility()">
             <app-icon 
               [name]="showPassword ? 'eye-closed' : 'eye'" 

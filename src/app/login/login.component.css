@@ -105,6 +105,8 @@
   align-items: center;
   transition: transform 0.4s, opacity 0.4s;
   border: 2px solid #ae1039; /* Red border */
+  box-sizing: border-box;
+  overflow: hidden;
 }
 .login-card.is-1 {
   transform: translateY(0);
@@ -137,6 +139,7 @@
   margin-bottom: 16px;
   padding: 0 8px;
   transition: background 0.2s;
+  width: 100%;
 }
 
 .input-group::after {
@@ -167,6 +170,7 @@
   background: transparent;
   outline: none;
   padding: 12px 0;
+  width: 100%;
 }
 
 .input-icon {

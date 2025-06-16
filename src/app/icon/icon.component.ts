@@ -25,9 +25,9 @@ import { CommonModule } from '@angular/common';
 })
 export class IconComponent {
   @Input() name!: string;
-  @Input() size: number = 22;
+  @Input() size = 22;
   @Input() color?: string;
-  @Input() alt: string = '';
+  @Input() alt = '';
 
   getFilterForColor(color?: string): string {
     if (!color) return 'none';

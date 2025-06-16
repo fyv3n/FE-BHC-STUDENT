@@ -157,6 +157,7 @@ body {
   border: none;
   box-shadow: none;
   border-bottom: 1.5px solid #ececec;
+  margin-bottom: 24px;
 }
 
 .top-bar-date {
@@ -312,9 +313,38 @@ body {
 }
 
 .class-card-top {
-  background: #AE1039;
+  background-image: radial-gradient(circle at 77% 43%, rgba(168, 168, 168, 0.04) 0%, rgba(168, 168, 168, 0.04) 50%, rgba(10, 10, 10, 0.04) 50%, rgba(10, 10, 10, 0.04) 100%), 
+                  radial-gradient(circle at 33% 65%, rgba(248, 248, 248, 0.04) 0%, rgba(248, 248, 248, 0.04) 50%, rgba(228, 228, 228, 0.04) 50%, rgba(228, 228, 228, 0.04) 100%), 
+                  radial-gradient(circle at 92% 79%, rgba(152, 152, 152, 0.04) 0%, rgba(152, 152, 152, 0.04) 50%, rgba(28, 28, 28, 0.04) 50%, rgba(28, 28, 28, 0.04) 100%), 
+                  radial-gradient(circle at 91% 13%, rgba(41, 41, 41, 0.04) 0%, rgba(41, 41, 41, 0.04) 50%, rgba(214, 214, 214, 0.04) 50%, rgba(214, 214, 214, 0.04) 100%), 
+                  linear-gradient(90deg, var(--maroon), rgb(9, 102, 168));
   color: #fff;
   padding: 20px 20px 16px 20px;
+  position: relative;
+  overflow: hidden;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.class-card-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  background-image: url('/assets/BHE-LOGO.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.class-code, .class-subject, .class-schedule, .class-room {
+  position: relative;
+  z-index: 2;
 }
 
 .class-code {

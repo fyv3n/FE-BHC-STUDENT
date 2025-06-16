@@ -71,7 +71,7 @@ export class ClassDashboardComponent {
   }
 
   coursedashboard(code: string): void {
-    this.router.navigate(['/coursedashboard', code])
+    this.router.navigate(['/course-dashboard', code])
   }
 
 }

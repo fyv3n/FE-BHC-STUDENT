@@ -12,14 +12,14 @@
         <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Todo</span>
       </a>
-      <a class="sidebar-link" (click)="classes()">
+      <a class="sidebar-link" (click)="classes()" tabindex="0" (keydown.enter)="classes()" (keydown.space)="classes()">
         <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Classes</span>
       </a>
     </nav>
     <div class="sidebar-logout">
       <hr>
-      <a class="sidebar-link" (click)="logout()">
+      <a class="sidebar-link" (click)="logout()" tabindex="0" (keydown.enter)="logout()" (keydown.space)="logout()">
         <app-icon name="log-out" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Logout</span>
       </a>
@@ -27,7 +27,7 @@
   </aside>
 
   <!-- Sidebar Drawer Overlay (Mobile) -->
-  <div class="sidebar-overlay" *ngIf="sidebarOpen" (click)="closeSidebar()"></div>
+  <div class="sidebar-overlay" *ngIf="sidebarOpen" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()"></div>
   <!-- Sidebar Drawer (Mobile) -->
   <aside class="sidebar sidebar-drawer" [class.open]="sidebarOpen">
     <div class="sidebar-profile">
@@ -37,18 +37,18 @@
       <hr class="sidebar-divider" />
     </div>
     <nav class="sidebar-nav">
-      <a class="sidebar-link active" (click)="closeSidebar()">
+      <a class="sidebar-link active" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
         <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Todo</span>
       </a>
-      <a class="sidebar-link" (click)="classes(); closeSidebar()">
+      <a class="sidebar-link" (click)="classes(); closeSidebar()" tabindex="0" (keydown.enter)="classes(); closeSidebar()" (keydown.space)="classes(); closeSidebar()">
         <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Classes</span>
       </a>
     </nav>
     <div class="sidebar-logout">
       <hr>
-      <a class="sidebar-link" (click)="logout(); closeSidebar()">
+      <a class="sidebar-link" (click)="logout(); closeSidebar()" tabindex="0" (keydown.enter)="logout(); closeSidebar()" (keydown.space)="logout(); closeSidebar()">
         <app-icon name="log-out" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Logout</span>
       </a>
@@ -59,7 +59,7 @@
   <div class="main-content">
     <!-- Top Bar -->
     <header class="top-bar">
-      <button class="burger-menu" (click)="toggleSidebar()">
+      <button class="burger-menu" (click)="toggleSidebar()" tabindex="0" (keydown.enter)="toggleSidebar()" (keydown.space)="toggleSidebar()">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AE1039" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <div class="top-bar-date">
@@ -104,7 +104,7 @@
           <ng-template #pendingScore>
             <div class="score-badge pending">Score Pending</div>
           </ng-template>
-          <button class="activity-btn" (click)="goToActivityDetails(activity)">Activity</button>
+          <button class="activity-btn" (click)="goToActivityDetails(activity)" tabindex="0" (keydown.enter)="goToActivityDetails(activity)" (keydown.space)="goToActivityDetails(activity)">Activity</button>
         </div>
       </div>
     </section>

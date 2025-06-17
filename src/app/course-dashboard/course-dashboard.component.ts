@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
 import { MockdataComponent, ClassSchedule, Activity, Resource, Student, Teacher, Post } from '../mockdata/mockdata.component';
 
@@ -18,12 +18,14 @@ import { MockdataComponent, ClassSchedule, Activity, Resource, Student, Teacher,
 })
 export class CourseDashboardComponent {
   studentName = 'Student name';
-  classList: ClassSchedule[] = new MockdataComponent().classList;
+  classList: ClassSchedule[];
   selectedClass: ClassSchedule | undefined;
   activeTab: 'classFeed' | 'activitiesResources' | 'studentList' = 'classFeed';
-  
-  // Get mock data
-  mockData = new MockdataComponent();
+
+  private mockData = inject(MockdataComponent);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+
   activities: Activity[] = this.mockData.activities;
   resources: Resource[] = this.mockData.resources;
   students: Student[] = this.mockData.students;
@@ -33,6 +35,17 @@ export class CourseDashboardComponent {
   newPostContent = '';
   activeCommentPostId: string | null = null;
   newCommentText = '';
+  sidebarOpen = false;
+
+  constructor() {
+    this.classList = this.mockData.classList;
+    this.route.paramMap.subscribe(params => {
+      const classCode = params.get('code');
+      if (classCode) {
+        this.selectedClass = this.classList.find(cls => cls.code === classCode);
+      }
+    });
+  }
 
   createPost() {
     if (!this.newPostContent.trim()) return;
@@ -53,15 +66,6 @@ export class CourseDashboardComponent {
     this.newPostContent = '';
   }
 
-  constructor(private router: Router, private route: ActivatedRoute) {
-    this.route.paramMap.subscribe(params => {
-      const classCode = params.get('code');
-      if (classCode) {
-        this.selectedClass = this.classList.find(cls => cls.code === classCode);
-      }
-    });
-  }
-
   enterClass(code: string) {
     this.router.navigate(['/classroom', code]);
   }
@@ -69,8 +73,6 @@ export class CourseDashboardComponent {
   get currentDateTime() {
     return new Date();
   }
-
-  sidebarOpen = false;
 
   openSidebar() {
     this.sidebarOpen = true;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { IconComponent } from '../icon/icon.component';
 import { trigger, transition, style, animate } from '@angular/animations';
@@ -22,8 +22,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class LoginComponent {
   showPassword = false;
-
-  constructor(private router: Router) {}
+  private router = inject(Router);
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;

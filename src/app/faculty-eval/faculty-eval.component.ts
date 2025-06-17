@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
@@ -18,10 +18,12 @@ import { MockdataComponent } from '../mockdata/mockdata.component';
   styleUrls: ['./faculty-eval.component.css']
 })
 export class FacultyEvalComponent {
-  mockData = new MockdataComponent();
+  private mockData = inject(MockdataComponent);
+  private router = inject(Router);
   studentName = 'Student name';
   searchTerm = '';
-  
+  sidebarOpen = false;
+
   get filteredFaculty() {
     if (!this.searchTerm.trim()) return this.mockData.facultyList;
     return this.mockData.facultyList.filter(faculty =>
@@ -30,8 +32,6 @@ export class FacultyEvalComponent {
     );
   }
 
-  constructor(private router: Router) {}
-
   enterFacultyEvaluation(id: string) {
     this.router.navigate(['/faculty-evaluation-details', id]);
   }
@@ -39,8 +39,6 @@ export class FacultyEvalComponent {
   get currentDateTime() {
     return new Date();
   }
-
-  sidebarOpen = false;
 
   openSidebar() {
     this.sidebarOpen = true;
@@ -73,4 +71,4 @@ export class FacultyEvalComponent {
   facultyEval(): void {
     this.router.navigate(['/faculty-eval']);
   }
-} 
+}

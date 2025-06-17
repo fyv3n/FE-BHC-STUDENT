@@ -8,18 +8,18 @@
       <hr class="sidebar-divider" />
     </div>
     <nav class="sidebar-nav">
-      <a class="sidebar-link" (click)="todolist()">
+      <a class="sidebar-link" (click)="todolist()" tabindex="0" (keydown.enter)="todolist()" (keydown.space)="todolist()">
         <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Todo"></app-icon>
         <span>Todo</span>
       </a>
-      <a class="sidebar-link active" (click)="classDashboard()">
+      <a class="sidebar-link active" (click)="classDashboard()" tabindex="0" (keydown.enter)="classDashboard()" (keydown.space)="classDashboard()">
         <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Classes"></app-icon>
         <span>Classes</span>
       </a>
     </nav>
     <div class="sidebar-logout">
       <hr>
-      <a class="sidebar-link" (click)="logout()">
+      <a class="sidebar-link" (click)="logout()" tabindex="0" (keydown.enter)="logout()" (keydown.space)="logout()">
         <app-icon name="log-out" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Logout"></app-icon>
         <span>Logout</span>
       </a>
@@ -27,7 +27,7 @@
   </aside>
 
   <!-- Sidebar Drawer Overlay (Mobile) -->
-  <div class="sidebar-overlay" *ngIf="sidebarOpen" (click)="closeSidebar()"></div>
+  <div class="sidebar-overlay" *ngIf="sidebarOpen" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()"></div>
   
   <!-- Sidebar Drawer (Mobile) -->
   <aside class="sidebar sidebar-drawer" [class.open]="sidebarOpen">
@@ -38,18 +38,18 @@
       <hr class="sidebar-divider" />
     </div>
     <nav class="sidebar-nav">
-      <a class="sidebar-link" (click)="todolist(); closeSidebar()">
+      <a class="sidebar-link" (click)="todolist(); closeSidebar()" tabindex="0" (keydown.enter)="todolist(); closeSidebar()" (keydown.space)="todolist(); closeSidebar()">
         <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Todo"></app-icon>
         <span>Todo</span>
       </a>
-      <a class="sidebar-link active" (click)="classDashboard(); closeSidebar()">
+      <a class="sidebar-link active" (click)="classDashboard(); closeSidebar()" tabindex="0" (keydown.enter)="classDashboard(); closeSidebar()" (keydown.space)="classDashboard(); closeSidebar()">
         <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Classes"></app-icon>
         <span>Classes</span>
       </a>
     </nav>
     <div class="sidebar-logout">
       <hr>
-      <a class="sidebar-link" (click)="logout()">
+      <a class="sidebar-link" (click)="logout()" tabindex="0" (keydown.enter)="logout()" (keydown.space)="logout()">
         <app-icon name="log-out" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Logout"></app-icon>
         <span>Logout</span>
       </a>
@@ -59,7 +59,7 @@
   <div class="main-content">
     <!-- Top Bar -->
     <header class="top-bar">
-      <button class="burger-menu" (click)="toggleSidebar()">
+      <button class="burger-menu" (click)="toggleSidebar()" tabindex="0" (keydown.enter)="toggleSidebar()" (keydown.space)="toggleSidebar()">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AE1039" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <div class="top-bar-date">
@@ -72,7 +72,7 @@
     <div class="activity-details-container">
       <!-- Header -->
       <header class="activity-header">
-        <button class="back-button" (click)="goBack()">
+        <button class="back-button" (click)="goBack()" tabindex="0" (keydown.enter)="goBack()" (keydown.space)="goBack()">
           <app-icon name="arrow-left" [size]="20" color="#666"></app-icon>
           Back
         </button>
@@ -99,7 +99,7 @@
               <button 
                 class="submit-comment" 
                 [disabled]="!newComment.trim()"
-                (click)="submitComment()">
+                (click)="submitComment()" tabindex="0" (keydown.enter)="submitComment()" (keydown.space)="submitComment()">
                 <app-icon name="arrow-right" [size]="20" color="#FFFFFF"></app-icon>
               </button>
             </div>
@@ -185,4 +185,4 @@
       </div>
     </div>
   </div>
-</div> 
+</div>

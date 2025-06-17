@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { IconComponent } from '../icon/icon.component';
@@ -14,9 +14,10 @@ import { MockdataComponent, ClassSchedule } from '../mockdata/mockdata.component
   templateUrl: './class-schedule.component.html',
   styleUrls: ['./class-schedule.component.css']
 })
-export class ClassScheduleComponent implements OnInit {
-  private mockData = new MockdataComponent();
-  
+export class ClassScheduleComponent {
+  private mockData = inject(MockdataComponent);
+  private router = inject(Router);
+
   get classList(): ClassSchedule[] {
     return this.mockData.classList;
   }
@@ -32,10 +33,6 @@ export class ClassScheduleComponent implements OnInit {
   get weekDays(): string[] {
     return this.mockData.weekDays;
   }
-
-  constructor(private router: Router) {}
-
-  ngOnInit(): void {}
 
   goBack(): void {
     this.router.navigate(['/class-dashboard']);

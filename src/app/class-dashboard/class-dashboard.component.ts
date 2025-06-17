@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
@@ -41,10 +41,11 @@ import { trigger, transition, style, animate, query, stagger } from '@angular/an
   ]
 })
 export class ClassDashboardComponent {
-  mockData = new MockdataComponent();
+  mockData = inject(MockdataComponent);
   studentName = 'Student name';
   searchTerm = '';
-  
+  sidebarOpen = false;
+
   get filteredClasses() {
     if (!this.searchTerm.trim()) return this.mockData.classList;
     return this.mockData.classList.filter(cls =>
@@ -53,17 +54,11 @@ export class ClassDashboardComponent {
     );
   }
 
-  constructor(private router: Router) {}
-
-  enterClass(code: string) {
-    this.router.navigate(['/classroom', code]);
-  }
+  private router = inject(Router);
 
   get currentDateTime() {
     return new Date();
   }
-
-  sidebarOpen = false;
 
   openSidebar() {
     this.sidebarOpen = true;
@@ -96,5 +91,4 @@ export class ClassDashboardComponent {
   coursedashboard(code: string): void {
     this.router.navigate(['/course-dashboard', code])
   }
-
 }

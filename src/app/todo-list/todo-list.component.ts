@@ -18,7 +18,7 @@ import { MockdataComponent, Activity } from '../mockdata/mockdata.component';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  studentName = 'John Doe'; // Replace with actual student name
+  studentName = 'Student Name'; // Replace with actual student name
   sidebarOpen = false;
   currentDateTime: Date = new Date();
   activities: Activity[] = [];

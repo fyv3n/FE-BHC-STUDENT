@@ -45,6 +45,7 @@ body {
 }
 
 .sidebar-profile {
+  background: var(--maroon);
   display: block;
   text-align: center;
   margin-bottom: 40px;
@@ -134,6 +135,7 @@ body {
   border: none;
   border-top: 1px solid rgba(255,255,255,0.5);
   margin: 18px 0 10px 8px;
+  background: transparent;
 }
 
 /* Main Content */

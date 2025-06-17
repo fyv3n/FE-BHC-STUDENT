@@ -1,0 +1,109 @@
+<div class="dashboard-container">
+  <!-- Persistent Sidebar for Desktop -->
+  <aside class="sidebar">
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar">
+      </div>
+      <div class="sidebar-student-name">{{ studentName }}</div>
+      <hr class="sidebar-divider" />
+    </div>
+    <nav class="sidebar-nav">
+      <a class="sidebar-link" (click)="todolist()">
+        <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Todo</span>
+      </a>
+      <a class="sidebar-link active">
+        <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Classes</span>
+      </a>
+      <a class="sidebar-link" (click)="facultyEval()">
+        <app-icon name="evaluation" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Faculty Evaluation</span>
+      </a>
+    </nav>
+    <div class="sidebar-logout">
+      <hr>
+      <a class="sidebar-link" (click)="logout()">
+        <app-icon name="log-out" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Logout</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Sidebar Drawer Overlay (Mobile) -->
+  <div class="sidebar-overlay" *ngIf="sidebarOpen" (click)="closeSidebar()"></div>
+  <!-- Sidebar Drawer (Mobile) -->
+  <aside class="sidebar sidebar-drawer" [class.open]="sidebarOpen">
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar">
+      </div>
+      <div class="sidebar-student-name">{{ studentName }}</div>
+      <hr class="sidebar-divider" />
+    </div>
+    <nav class="sidebar-nav">
+      <a class="sidebar-link" (click)="closeSidebar()">
+        <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Todo</span>
+      </a>
+      <a class="sidebar-link active" (click)="closeSidebar()">
+        <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Classes</span>
+      </a>
+      <a class="sidebar-link" (click)="facultyEval()">
+        <app-icon name="evaluation" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Faculty Evaluation</span>
+      </a>
+    </nav>
+    <div class="sidebar-logout">
+      <hr>
+      <a class="sidebar-link" (click)="logout()">
+        <app-icon name="log-out" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Logout</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <button class="burger-menu" (click)="toggleSidebar()">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AE1039" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="top-bar-date">
+        <app-icon name="calendar" [size]="16" color="#888"></app-icon>
+        {{ currentDateTime | date: 'EEEE, MMMM d, yyyy, hh:mm:ss a' }}
+      </div>
+    </header>
+
+    <!-- Main Section -->
+    <section class="class-section">
+      <div class="class-header">
+        <h1>Faculty Evaluation</h1>
+      </div>
+      <div class="classes-bg-text">FACULTY EVALUATION</div>
+      <div class="class-search-bar">
+        <input
+          type="text"
+          placeholder="Search Faculty..."
+          [(ngModel)]="searchTerm"
+        />
+        <button>
+          <app-icon name="search" [size]="22" color="#FFFFFF"></app-icon>
+        </button>
+      </div>
+      <div class="class-grid">
+        <div class="class-card" *ngFor="let faculty of filteredFaculty">
+          <div class="class-card-top">
+            <div class="class-code">Faculty ID: {{ faculty.id }}</div>
+            <div class="class-subject">{{ faculty.name }}</div>
+            <div class="class-schedule">Department: {{ faculty.department }}</div>
+          </div>
+          <div class="class-card-bottom">
+            <button class = "enter" (click)="enterFacultyEvaluation(faculty.id)">Evaluate ›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div> 

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
 import { MockdataComponent } from '../mockdata/mockdata.component';
+import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
 
 @Component({
   selector: 'app-class-dashboard',
@@ -15,7 +16,29 @@ import { MockdataComponent } from '../mockdata/mockdata.component';
     IconComponent,
   ],
   templateUrl: './class-dashboard.component.html',
-  styleUrls: ['./class-dashboard.component.css']
+  styleUrls: ['./class-dashboard.component.css'],
+  animations: [
+    trigger('cardStagger', [
+      transition(':enter', [
+        query('.class-card', [
+          style({ opacity: 0, transform: 'translateY(40px)' }),
+          stagger(120, [
+            animate('600ms cubic-bezier(0.23, 1, 0.32, 1)',
+              style({ opacity: 1, transform: 'translateY(0)' })
+            )
+          ])
+        ], { optional: true })
+      ])
+    ]),
+    trigger('fadeInUpCard', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(40px)' }),
+        animate('600ms cubic-bezier(0.23, 1, 0.32, 1)',
+          style({ opacity: 1, transform: 'translateY(0)' })
+        )
+      ])
+    ])
+  ]
 })
 export class ClassDashboardComponent {
   mockData = new MockdataComponent();

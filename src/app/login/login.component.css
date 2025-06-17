@@ -3,20 +3,25 @@
   display: flex;
   height: 100vh;
   background: #f5f5f5;
+  align-items: center;
+  justify-content: center;
 }
 
 .info-panel {
   position: relative;
   overflow: hidden;
   color: #fff;
-  padding: 32px 24px;
+  padding: 36px 28px;
   display: flex;
   flex-direction: column;
-  border-radius: 0 12px 12px 0;
-  justify-content: flex-start;
-  min-width: 400px;
-  max-width: 500px;
+  border-radius: 16px;
+  justify-content: center;
+  min-width: 380px;
+  max-width: 480px;
   text-align: center;
+  font-size: 1.08rem;
+  margin-right: 32px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
 }
 
 /* Background image with low opacity */
@@ -25,7 +30,7 @@
   position: absolute;
   inset: 0;
   background: url('/assets/background.jpg') center center/cover no-repeat;
-  opacity: 18; /* Faint image */
+  opacity: 0.10; /* Faint image */
   z-index: 0;
 }
 
@@ -35,7 +40,7 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, #b92b27 0%, #1565c0 100%);
-  opacity: 0.95; /* Strong gradient, but lets image show through */
+  opacity: 0.98; /* Strong gradient, but lets image show through */
   z-index: 1;
 }
 
@@ -48,19 +53,19 @@
 .college-header {
   display: flex;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 .logo-placeholder {
   width: 64px;
   height: 64px;
+  font-size: 18px;
+  margin-right: 16px;
   background: #fff3;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: 18px;
-  margin-right: 16px;
 }
 .college-info {
   display: flex;
@@ -69,26 +74,28 @@
 }
 .college-name {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
+  letter-spacing: 1px;
 }
 .college-location, .college-address {
-  font-size: 14px;
+  font-size: 15px;
 }
 .section-title {
   font-weight: bold;
   color: #ffe082;
-  margin-top: 24px;
-  margin-bottom: 4px;
+  margin-top: 20px;
+  margin-bottom: 6px;
   font-size: 16px;
+  letter-spacing: 0.5px;
 }
 .section-content {
-  font-size: 13px;
+  font-size: 14px;
   color: #fff;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  line-height: 1.55;
 }
 
 .login-panel {
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -207,8 +214,14 @@
 }
 
 @media (max-width: 900px) {
+  .login-page-container {
+    flex-direction: column;
+    height: auto;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
   .info-panel {
-    display: none !important;
+    display: none;
   }
   .login-panel {
     flex: 1 1 100%;
@@ -226,7 +239,7 @@
   }
   .login-page-container {
     flex-direction: column;
-    height: 100vh;
+    height: auto;
   }
   .college-header {
     position: sticky;
@@ -235,14 +248,6 @@
     background: linear-gradient(135deg, #b92b27 0%, #1565c0 100%);
     /* Optionally add a slight box-shadow for separation */
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  }
-  .info-panel {
-    border-radius: 20px 20px 0 0;
-    padding: 16px 8px;
-  }
-  .login-card {
-    margin-top: 24px;
-    padding: 24px 8px 16px 8px;
   }
 }
 

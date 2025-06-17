@@ -41,14 +41,14 @@
         <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Todo</span>
       </a>
-      <a class="sidebar-link" (click)="classes()">
+      <a class="sidebar-link" (click)="classes(); closeSidebar()">
         <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Classes</span>
       </a>
     </nav>
     <div class="sidebar-logout">
       <hr>
-      <a class="sidebar-link" (click)="logout()">
+      <a class="sidebar-link" (click)="logout(); closeSidebar()">
         <app-icon name="log-out" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Logout</span>
       </a>
@@ -76,41 +76,35 @@
       </div>
       
       <div class="todo-section-content">
-        <div class="section-title">CS Thesis Writing 1 (LAB)</div>
-        <div class="todo-item completed">
+        <div *ngFor="let activity of activities" class="todo-item" [ngClass]="{
+          'completed': activity.status === 'completed',
+          'missing': activity.status === 'ongoing' && activity.lateSubmission,
+          'upcoming': activity.status === 'upcoming'
+        }">
+          <div class="todo-status-icon">
+            <ng-container *ngIf="activity.status === 'completed'; else notCompleted">
+              <span class="status-check">✔</span>
+            </ng-container>
+            <ng-template #notCompleted>
+              <span class="status-dot" [ngClass]="{
+                'dot-upcoming': activity.status === 'upcoming',
+                'dot-missing': activity.status === 'ongoing' && activity.lateSubmission
+              }"></span>
+            </ng-template>
+          </div>
           <div class="todo-details">
-            <div class="todo-title">Thesis Writing 1 Dream Project Proposal</div>
+            <div class="todo-title">{{ activity.title }}</div>
             <div class="todo-meta">
-              <span class="due-date">Due Date: Feb 2, 2025 4:59 PM</span><br>
-              <span class="submitted-date">Date Submitted: Feb 2, 2025 7:42 PM</span><br>
-              <span class="late-submission">Late Submission</span>
+              <span class="due-date">Due Date: {{ activity.dueDate | date: 'MMM d, y h:mm a' }}</span><br>
+              <span *ngIf="activity.dateSubmitted">Date Submitted: {{ activity.dateSubmitted | date: 'MMM d, y h:mm a' }}</span><br>
+              <span *ngIf="activity.lateSubmission" class="late-submission">Late Submission</span>
             </div>
           </div>
-          <div class="score success">50 / 100</div>
-          <button class="activity-btn">Activity</button>
-        </div>
-        <div class="todo-item missing">
-          <div class="todo-details">
-            <div class="todo-title">PROPOSED THESIS PROJECT ADVISER PROFILE</div>
-            <div class="todo-meta">
-              <span class="due-date">Due Date: Feb 8, 2025 8:59 PM</span><br>
-              <span class="no-submission">No Submission</span>
-            </div>
-          </div>
-          <div class="score warning">No Submission</div>
-          <button class="activity-btn">Activity</button>
-        </div>
-        <div class="todo-item completed">
-          <div class="todo-details">
-            <div class="todo-title">Revision List</div>
-            <div class="todo-meta">
-              <span class="due-date">Due Date: Mar 13, 2025 11:59 PM</span><br>
-              <span class="submitted-date">Date Submitted: Mar 12, 2025 4:55 PM</span><br>
-              <span class="on-time">On Time</span>
-            </div>
-          </div>
-          <div class="score pending">Score Pending</div>
-          <button class="activity-btn">Activity</button>
+          <div class="score-badge" *ngIf="activity.score !== null; else pendingScore">{{ activity.score }}</div>
+          <ng-template #pendingScore>
+            <div class="score-badge pending">Score Pending</div>
+          </ng-template>
+          <button class="activity-btn" (click)="goToActivityDetails(activity)">Activity</button>
         </div>
       </div>
     </section>

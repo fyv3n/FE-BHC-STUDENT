@@ -27,6 +27,9 @@ export interface Activity {
     content: string;
     datePosted: string;
   }[];
+  score?: number | null; // Added score property
+  dateSubmitted?: string | null; // Added dateSubmitted property
+  lateSubmission?: boolean; // Added lateSubmission property
 }
 
 export interface Resource {
@@ -146,7 +149,10 @@ export class MockdataComponent {
       type: 'exam',
       dueDate: '2024-03-15T14:00:00',
       datePosted: '2024-03-01T09:00:00',
-      status: 'upcoming'
+      status: 'upcoming',
+      score: null,
+      dateSubmitted: null,
+      lateSubmission: false
     },
     {
       id: '2',
@@ -154,7 +160,10 @@ export class MockdataComponent {
       type: 'assignment',
       dueDate: '2024-03-10T23:59:00',
       datePosted: '2024-03-01T10:00:00',
-      status: 'ongoing'
+      status: 'ongoing',
+      score: 85,
+      dateSubmitted: '2024-03-11T10:00:00',
+      lateSubmission: true
     },
     {
       id: '3',
@@ -162,7 +171,10 @@ export class MockdataComponent {
       type: 'quiz',
       dueDate: '2024-03-05T15:00:00',
       datePosted: '2024-03-01T11:00:00',
-      status: 'completed'
+      status: 'completed',
+      score: 92,
+      dateSubmitted: '2024-03-05T15:10:00',
+      lateSubmission: false
     }
   ];
 

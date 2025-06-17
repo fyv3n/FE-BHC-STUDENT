@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
 import { FormsModule } from '@angular/forms';
+import { MockdataComponent, Activity } from '../mockdata/mockdata.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -20,8 +21,12 @@ export class TodoListComponent implements OnInit {
   studentName: string = 'John Doe'; // Replace with actual student name
   sidebarOpen: boolean = false;
   currentDateTime: Date = new Date();
+  activities: Activity[] = [];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    const mock = new MockdataComponent();
+    this.activities = mock.activities;
+  }
 
   ngOnInit(): void {
     // Update time every second
@@ -45,5 +50,9 @@ export class TodoListComponent implements OnInit {
   logout(): void {
     // Add logout logic here
     this.router.navigate(['/login']);
+  }
+
+  goToActivityDetails(activity: Activity): void {
+    this.router.navigate(['/activity', activity.id]);
   }
 }

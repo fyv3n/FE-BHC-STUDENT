@@ -8,18 +8,18 @@
       <hr class="sidebar-divider" />
     </div>
     <nav class="sidebar-nav">
-      <a class="sidebar-link" (click)="todolist()">
+      <a class="sidebar-link" (click)="todolist()" tabindex="0" (keydown.enter)="todolist()" (keydown.space)="todolist()">
         <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Todo"></app-icon>
         <span>Todo</span>
       </a>
-      <a class="sidebar-link active" (click)="classDashboard()">
+      <a class="sidebar-link active" (click)="classDashboard()" tabindex="0" (keydown.enter)="classDashboard()" (keydown.space)="classDashboard()">
         <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Classes"></app-icon>
         <span>Classes</span>
       </a>
     </nav>
     <div class="sidebar-logout">
       <hr>
-      <a class="sidebar-link" (click)="logout()">
+      <a class="sidebar-link" (click)="logout()" tabindex="0" (keydown.enter)="logout()" (keydown.space)="logout()">
         <app-icon name="log-out" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Logout"></app-icon>
         <span>Logout</span>
       </a>
@@ -27,7 +27,7 @@
   </aside>
 
   <!-- Sidebar Drawer Overlay (Mobile) -->
-  <div class="sidebar-overlay" *ngIf="sidebarOpen" (click)="closeSidebar()"></div>
+  <div class="sidebar-overlay" *ngIf="sidebarOpen" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()"></div>
   <!-- Sidebar Drawer (Mobile) -->
   <aside class="sidebar sidebar-drawer" [class.open]="sidebarOpen">
     <div class="sidebar-profile">
@@ -37,18 +37,18 @@
       <hr class="sidebar-divider" />
     </div>
     <nav class="sidebar-nav">
-      <a class="sidebar-link" (click)="todolist(); closeSidebar()">
+      <a class="sidebar-link" (click)="todolist(); closeSidebar()" tabindex="0" (keydown.enter)="todolist(); closeSidebar()" (keydown.space)="todolist(); closeSidebar()">
         <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Todo Icon"></app-icon>
         <span>Todo</span>
       </a>
-      <a class="sidebar-link active" (click)="classDashboard(); closeSidebar()">
+      <a class="sidebar-link active" (click)="classDashboard(); closeSidebar()" tabindex="0" (keydown.enter)="classDashboard(); closeSidebar()" (keydown.space)="classDashboard(); closeSidebar()">
         <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Classes Icon"></app-icon>
         <span>Classes</span>
       </a>
     </nav>
     <div class="sidebar-logout">
       <hr>
-      <a class="sidebar-link" (click)="logout()">
+      <a class="sidebar-link" (click)="logout()" tabindex="0" (keydown.enter)="logout()" (keydown.space)="logout()">
         <app-icon name="log-out" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Logout Icon"></app-icon>
         <span>Logout</span>
       </a>
@@ -58,7 +58,7 @@
   <div class="main-content">
     <!-- Top Bar -->
     <header class="top-bar">
-      <button class="burger-menu" (click)="toggleSidebar()">
+      <button class="burger-menu" (click)="toggleSidebar()" tabindex="0" (keydown.enter)="toggleSidebar()" (keydown.space)="toggleSidebar()">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AE1039" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <div class="top-bar-date">
@@ -84,11 +84,11 @@
         <!-- Course Navigation -->
         <nav class="course-nav">
           <div class="nav-links">
-            <a [class.active]="activeTab === 'classFeed'" (click)="setActiveTab('classFeed')">Class Feed</a>
-            <a [class.active]="activeTab === 'activitiesResources'" (click)="setActiveTab('activitiesResources')">Activities/Resources</a>
-            <a [class.active]="activeTab === 'studentList'" (click)="setActiveTab('studentList')">Student List</a>
+            <a [class.active]="activeTab === 'classFeed'" (click)="setActiveTab('classFeed')" tabindex="0" (keydown.enter)="setActiveTab('classFeed')" (keydown.space)="setActiveTab('classFeed')">Class Feed</a>
+            <a [class.active]="activeTab === 'activitiesResources'" (click)="setActiveTab('activitiesResources')" tabindex="0" (keydown.enter)="setActiveTab('activitiesResources')" (keydown.space)="setActiveTab('activitiesResources')">Activities/Resources</a>
+            <a [class.active]="activeTab === 'studentList'" (click)="setActiveTab('studentList')" tabindex="0" (keydown.enter)="setActiveTab('studentList')" (keydown.space)="setActiveTab('studentList')">Student List</a>
           </div>
-          <a class="go-back-btn" (click)="coursedashboard()">
+          <a class="go-back-btn" (click)="coursedashboard()" tabindex="0" (keydown.enter)="coursedashboard()" (keydown.space)="coursedashboard()">
             <app-icon name="arrow-left" [size]="16" color="#666" alt="Back Arrow Icon"></app-icon>
             Go Back
           </a>
@@ -118,7 +118,7 @@
                       <app-icon name="paperclip" [size]="20" color="#666" alt="File Attachment Icon"></app-icon>
                     </button>
                   </div>
-                  <button class="post-button" (click)="createPost()">Post</button>
+                  <button class="post-button" (click)="createPost()" tabindex="0" (keydown.enter)="createPost()" (keydown.space)="createPost()">Post</button>
                 </div>
               </div>
             </div>
@@ -152,7 +152,7 @@
                     <app-icon name="thumbs-up" [size]="18" color="#666" alt="Like Icon"></app-icon>
                     <span>{{ post.likes }}</span>
                   </button>
-                  <button class="action-button" (click)="toggleComments(post.id)">
+                  <button class="action-button" (click)="toggleComments(post.id)" tabindex="0" (keydown.enter)="toggleComments(post.id)" (keydown.space)="toggleComments(post.id)">
                     <app-icon name="message-square" [size]="18" color="#666" alt="Comment Icon"></app-icon>
                     <span>{{ post.comments }}</span>
                   </button>
@@ -188,7 +188,7 @@
                       <button 
                         class="comment-button" 
                         [disabled]="!newCommentText.trim()"
-                        (click)="addComment(post.id)">
+                        (click)="addComment(post.id)" tabindex="0" (keydown.enter)="addComment(post.id)" (keydown.space)="addComment(post.id)">
                         Comment
                       </button>
                     </div>
@@ -204,7 +204,7 @@
             <div class="sidebar-section">
               <h3 class="sidebar-title">List of Activities</h3>
               <div class="activities-list" *ngIf="activities.length > 0; else noActivities">
-                <div class="activity-item" *ngFor="let activity of activities" (click)="viewActivity(activity.id)" style="cursor: pointer;">
+                <div class="activity-item" *ngFor="let activity of activities" (click)="viewActivity(activity.id)" style="cursor: pointer;" tabindex="0" (keydown.enter)="viewActivity(activity.id)" (keydown.space)="viewActivity(activity.id)">
                   <div class="activity-icon">
                     <app-icon name="notebook-pen" [size]="20" color="#666" [alt]="activity.type + ' Icon'"></app-icon>
                   </div>
@@ -252,7 +252,7 @@
           </div>
           
           <div class="activities-list" *ngIf="activities.length > 0; else noActivities">
-            <div class="activity-item" *ngFor="let activity of activities" (click)="viewActivity(activity.id)" style="cursor: pointer;">
+            <div class="activity-item" *ngFor="let activity of activities" (click)="viewActivity(activity.id)" style="cursor: pointer;" tabindex="0" (keydown.enter)="viewActivity(activity.id)" (keydown.space)="viewActivity(activity.id)">
               <div class="activity-icon">
                 <app-icon name="notebook-pen" [size]="20" color="#666" [alt]="activity.type + ' Icon'"></app-icon>
               </div>

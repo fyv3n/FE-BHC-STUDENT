@@ -243,6 +243,10 @@ export class MockdataComponent {
     avatar: undefined // You can add an avatar URL here if needed
   };
 
+  get facultyList(): Teacher[] {
+    return [this.teacher];
+  }
+
   days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
   timeSlots = [
     '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM',

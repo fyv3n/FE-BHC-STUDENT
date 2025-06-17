@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
@@ -18,17 +18,15 @@ import { MockdataComponent, Activity } from '../mockdata/mockdata.component';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  studentName: string = 'John Doe'; // Replace with actual student name
-  sidebarOpen: boolean = false;
+  studentName = 'John Doe'; // Replace with actual student name
+  sidebarOpen = false;
   currentDateTime: Date = new Date();
   activities: Activity[] = [];
-
-  constructor(private router: Router) {
-    const mock = new MockdataComponent();
-    this.activities = mock.activities;
-  }
+  private router = inject(Router);
+  private mock = inject(MockdataComponent);
 
   ngOnInit(): void {
+    this.activities = this.mock.activities;
     // Update time every second
     setInterval(() => {
       this.currentDateTime = new Date();

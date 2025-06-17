@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -20,11 +20,9 @@ export class ActivityDetailsComponent implements OnInit {
   studentName = 'Student name';
   sidebarOpen = false;
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private mockData: MockdataComponent
-  ) {}
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private mockData = inject(MockdataComponent);
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -65,8 +63,9 @@ export class ActivityDetailsComponent implements OnInit {
     // Implement file edit functionality
   }
 
-  onFileSelected(event: any) {
-    const file = event.target.files[0];
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files && input.files[0];
     if (file) {
       this.uploadedFiles.push({
         name: file.name,
@@ -81,4 +80,4 @@ export class ActivityDetailsComponent implements OnInit {
       this.newComment = '';
     }
   }
-} 
+}

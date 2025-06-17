@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IconComponent } from '../icon/icon.component';
-import { MockdataComponent, Faculty } from '../mockdata/mockdata.component';
+import { MockdataComponent, Teacher } from '../mockdata/mockdata.component';
 
 @Component({
   selector: 'app-faculty-evaluation-details',
@@ -14,15 +14,13 @@ import { MockdataComponent, Faculty } from '../mockdata/mockdata.component';
   styleUrls: ['./faculty-evaluation-details.component.css']
 })
 export class FacultyEvaluationDetailsComponent implements OnInit {
-  faculty: Faculty | undefined;
+  faculty: Teacher | undefined;
   studentName = 'Student name';
   sidebarOpen = false;
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private mockData: MockdataComponent
-  ) {}
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private mockData = inject(MockdataComponent);
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -60,4 +58,4 @@ export class FacultyEvaluationDetailsComponent implements OnInit {
   }
 
   // Add methods for evaluation form submission here
-} 
+}

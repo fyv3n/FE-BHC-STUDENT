@@ -57,5 +57,9 @@ export class FacultyEvaluationDetailsComponent implements OnInit {
     window.history.back();
   }
 
+  facultyEval() {
+    this.router.navigate(['/faculty-evaluation']);
+  }
+
   // Add methods for evaluation form submission here
 }

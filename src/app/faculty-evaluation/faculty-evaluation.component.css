@@ -92,6 +92,11 @@ body {
   transition: background 0.2s;
 }
 
+.sidebar-link span {
+  width: 100%;
+  text-align: center;
+}
+
 .sidebar-link.active, .sidebar-link:hover {
   background: var(--maroon-dark);
   border-radius: 0;

@@ -22,15 +22,27 @@ export class TodoListComponent implements OnInit {
   sidebarOpen = false;
   currentDateTime: Date = new Date();
   activities: Activity[] = [];
+  groupedActivities: { [subject: string]: Activity[] } = {};
   private router = inject(Router);
   private mock = inject(MockdataComponent);
 
   ngOnInit(): void {
     this.activities = this.mock.activities;
+    this.groupedActivities = this.groupActivitiesBySubject(this.activities);
     // Update time every second
     setInterval(() => {
       this.currentDateTime = new Date();
     }, 1000);
+  }
+
+  groupActivitiesBySubject(activities: Activity[]): { [subject: string]: Activity[] } {
+    return activities.reduce((groups, activity) => {
+      if (!groups[activity.subject]) {
+        groups[activity.subject] = [];
+      }
+      groups[activity.subject].push(activity);
+      return groups;
+    }, {} as { [subject: string]: Activity[] });
   }
 
   toggleSidebar(): void {
@@ -52,5 +64,9 @@ export class TodoListComponent implements OnInit {
 
   goToActivityDetails(activity: Activity): void {
     this.router.navigate(['/activity', activity.id]);
+  }
+
+  facultyEvaluation(): void {
+    this.router.navigate(['/faculty-evaluation']);
   }
 }

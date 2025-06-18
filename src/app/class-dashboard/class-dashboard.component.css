@@ -76,6 +76,11 @@ body {
   width: 100%;
 }
 
+.sidebar-link span {
+  width: 100%;
+  text-align: center;
+}
+
 .sidebar-link {
   display: flex;
   flex-direction: column;

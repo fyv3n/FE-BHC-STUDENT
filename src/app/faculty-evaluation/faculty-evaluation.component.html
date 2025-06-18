@@ -81,10 +81,6 @@
     <section class="class-section">
       <div class="class-header">
         <h1>Faculty Evaluation</h1>
-        <button class="class-schedule-btn" (click)="viewEvaluationGuidelines()" tabindex="0" (keydown.enter)="viewEvaluationGuidelines()" (keydown.space)="viewEvaluationGuidelines()">
-          <app-icon name="calendar" [size]="22" color="#212529"></app-icon>
-          Evaluation Guidelines
-        </button>
       </div>
       <div class="classes-bg-text">FACULTY</div>
       <div class="class-search-bar">
@@ -103,7 +99,6 @@
             <div class="class-code">Faculty ID: {{ faculty.id }}</div>
             <div class="class-subject">{{ faculty.name }}</div>
             <div class="class-schedule">Department: {{ faculty.department }}</div>
-            <div class="class-room">Courses: {{ faculty.courses.join(', ') }}</div>
           </div>
           <div class="class-card-bottom">
             <button class = "enter" (click)="evaluateFaculty(faculty.id)" tabindex="0" (keydown.enter)="evaluateFaculty(faculty.id)" (keydown.space)="evaluateFaculty(faculty.id)">Evaluate ›</button>

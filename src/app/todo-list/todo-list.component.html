@@ -16,6 +16,10 @@
         <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Classes</span>
       </a>
+      <a class="sidebar-link" (click)="facultyEvaluation()" tabindex="0" (keydown.enter)="facultyEvaluation()" (keydown.space)="facultyEvaluation()">
+        <app-icon name="user-pen" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Faculty Evaluation</span>
+      </a>
     </nav>
     <div class="sidebar-logout">
       <hr>
@@ -44,6 +48,10 @@
       <a class="sidebar-link" (click)="classes(); closeSidebar()" tabindex="0" (keydown.enter)="classes(); closeSidebar()" (keydown.space)="classes(); closeSidebar()">
         <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Classes</span>
+      </a>
+      <a class="sidebar-link" (click)="facultyEvaluation(); closeSidebar()" tabindex="0" (keydown.enter)="facultyEvaluation(); closeSidebar()" (keydown.space)="facultyEvaluation(); closeSidebar()">
+        <app-icon name="user-pen" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Faculty Evaluation</span>
       </a>
     </nav>
     <div class="sidebar-logout">
@@ -76,36 +84,41 @@
       </div>
       
       <div class="todo-section-content">
-        <div *ngFor="let activity of activities" class="todo-item" [ngClass]="{
-          'completed': activity.status === 'completed',
-          'missing': activity.status === 'ongoing' && activity.lateSubmission,
-          'upcoming': activity.status === 'upcoming'
-        }">
-          <div class="todo-status-icon">
-            <ng-container *ngIf="activity.status === 'completed'; else notCompleted">
-              <span class="status-check">✔</span>
-            </ng-container>
-            <ng-template #notCompleted>
-              <span class="status-dot" [ngClass]="{
-                'dot-upcoming': activity.status === 'upcoming',
-                'dot-missing': activity.status === 'ongoing' && activity.lateSubmission
-              }"></span>
-            </ng-template>
-          </div>
-          <div class="todo-details">
-            <div class="todo-title">{{ activity.title }}</div>
-            <div class="todo-meta">
-              <span class="due-date">Due Date: {{ activity.dueDate | date: 'MMM d, y h:mm a' }}</span><br>
-              <span *ngIf="activity.dateSubmitted">Date Submitted: {{ activity.dateSubmitted | date: 'MMM d, y h:mm a' }}</span><br>
-              <span *ngIf="activity.lateSubmission" class="late-submission">Late Submission</span>
+        <ng-container *ngFor="let subject of groupedActivities | keyvalue">
+          <div class="subject-group">
+            <h3 class="subject-title">{{ subject.key }}</h3>
+            <div *ngFor="let activity of subject.value" class="todo-item" [ngClass]="{
+              'completed': activity.status === 'completed',
+              'missing': activity.status === 'ongoing' && activity.lateSubmission,
+              'upcoming': activity.status === 'upcoming'
+            }">
+              <div class="todo-status-icon">
+                <ng-container *ngIf="activity.status === 'completed'; else notCompleted">
+                  <span class="status-check">✔</span>
+                </ng-container>
+                <ng-template #notCompleted>
+                  <span class="status-dot" [ngClass]="{
+                    'dot-upcoming': activity.status === 'upcoming',
+                    'dot-missing': activity.status === 'ongoing' && activity.lateSubmission
+                  }"></span>
+                </ng-template>
+              </div>
+              <div class="todo-details">
+                <div class="todo-title">{{ activity.title }}</div>
+                <div class="todo-meta">
+                  <span class="due-date">Due Date: {{ activity.dueDate | date: 'MMM d, y h:mm a' }}</span><br>
+                  <span *ngIf="activity.dateSubmitted">Date Submitted: {{ activity.dateSubmitted | date: 'MMM d, y h:mm a' }}</span><br>
+                  <span *ngIf="activity.lateSubmission" class="late-submission">Late Submission</span>
+                </div>
+              </div>
+              <div class="score-badge" *ngIf="activity.score !== null; else pendingScore">{{ activity.score }}</div>
+              <ng-template #pendingScore>
+                <div class="score-badge pending">Score Pending</div>
+              </ng-template>
+              <button class="activity-btn" (click)="goToActivityDetails(activity)" tabindex="0" (keydown.enter)="goToActivityDetails(activity)" (keydown.space)="goToActivityDetails(activity)">Activity</button>
             </div>
           </div>
-          <div class="score-badge" *ngIf="activity.score !== null; else pendingScore">{{ activity.score }}</div>
-          <ng-template #pendingScore>
-            <div class="score-badge pending">Score Pending</div>
-          </ng-template>
-          <button class="activity-btn" (click)="goToActivityDetails(activity)" tabindex="0" (keydown.enter)="goToActivityDetails(activity)" (keydown.space)="goToActivityDetails(activity)">Activity</button>
-        </div>
+        </ng-container>
       </div>
     </section>
   </div>

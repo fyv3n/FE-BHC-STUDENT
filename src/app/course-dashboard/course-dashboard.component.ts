@@ -122,6 +122,10 @@ export class CourseDashboardComponent {
     this.router.navigate(['/student-list'])
   }
 
+  facultyEvaluation(): void {
+    this.router.navigate(['/faculty-evaluation']);
+  }
+
   setActiveTab(tab: string) {
     this.activeTab = tab as 'classFeed' | 'activitiesResources' | 'studentList';
   }

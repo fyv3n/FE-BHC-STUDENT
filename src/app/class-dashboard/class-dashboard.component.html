@@ -16,7 +16,7 @@
         <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Classes</span>
       </a>
-      <a class="sidebar-link" (click)="faculty()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
+      <a class="sidebar-link" (click)="faculty()" tabindex="0" (keydown.enter)="faculty()" (keydown.space)="faculty()">
         <app-icon name="user-pen" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Faculty Evaluation</span>
       </a>
@@ -49,7 +49,7 @@
         <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Todo</span>
       </a>
-      <a class="sidebar-link" (click)="faculty()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
+      <a class="sidebar-link" (click)="faculty(); closeSidebar()" tabindex="0" (keydown.enter)="faculty(); closeSidebar()" (keydown.space)="faculty(); closeSidebar()">
         <app-icon name="user-pen" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Faculty Evaluation</span>
       </a>

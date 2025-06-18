@@ -13,6 +13,7 @@ export interface ClassSchedule {
 export interface Activity {
   id: string;
   title: string;
+  subject: string; // Added subject property
   type: 'assignment' | 'exam' | 'quiz';
   dueDate: string;
   datePosted: string;
@@ -146,6 +147,7 @@ export class MockdataComponent {
     {
       id: '1',
       title: 'Midterm Examination',
+      subject: 'CS Thesis Writing (LAB)',
       type: 'exam',
       dueDate: '2024-03-15T14:00:00',
       datePosted: '2024-03-01T09:00:00',
@@ -157,6 +159,7 @@ export class MockdataComponent {
     {
       id: '2',
       title: 'Assignment 1: System Analysis',
+      subject: 'CS Thesis Writing (LAB)',
       type: 'assignment',
       dueDate: '2024-03-10T23:59:00',
       datePosted: '2024-03-01T10:00:00',
@@ -168,6 +171,7 @@ export class MockdataComponent {
     {
       id: '3',
       title: 'Quiz 1: Introduction to Systems',
+      subject: 'CS Thesis Writing (LAB)',
       type: 'quiz',
       dueDate: '2024-03-05T15:00:00',
       datePosted: '2024-03-01T11:00:00',
@@ -240,11 +244,47 @@ export class MockdataComponent {
     title: 'Associate Professor',
     email: 'sarah.anderson@university.edu',
     department: 'Computer Science Department',
-    avatar: undefined // You can add an avatar URL here if needed
+    avatar: undefined
+  };
+
+  teacher2: Teacher = {
+    id: 'T002',
+    name: 'Prof. Michael Lee',
+    title: 'Professor',
+    email: 'michael.lee@university.edu',
+    department: 'Mathematics Department',
+    avatar: undefined
+  };
+
+  teacher3: Teacher = {
+    id: 'T003',
+    name: 'Dr. Emily Chen',
+    title: 'Assistant Professor',
+    email: 'emily.chen@university.edu',
+    department: 'Physics Department',
+    avatar: undefined
+  };
+
+  teacher4: Teacher = {
+    id: 'T004',
+    name: 'Prof. David Kim',
+    title: 'Lecturer',
+    email: 'david.kim@university.edu',
+    department: 'History Department',
+    avatar: undefined
+  };
+
+  teacher5: Teacher = {
+    id: 'T005',
+    name: 'Dr. Maria Garcia',
+    title: 'Associate Professor',
+    email: 'maria.garcia@university.edu',
+    department: 'Biology Department',
+    avatar: undefined
   };
 
   get facultyList(): Teacher[] {
-    return [this.teacher];
+    return [this.teacher, this.teacher2, this.teacher3, this.teacher4, this.teacher5];
   }
 
   days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];

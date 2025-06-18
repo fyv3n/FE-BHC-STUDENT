@@ -77,6 +77,11 @@ body {
   width: 100%;
 }
 
+.sidebar-link span {
+  width: 100%;
+  text-align: center;
+}
+
 .sidebar-link {
   display: flex;
   flex-direction: column;
@@ -417,6 +422,23 @@ body {
 .activity-btn:hover {
   background: var(--maroon);
   color: white;
+}
+
+/* Subject grouping styles */
+.subject-group {
+  margin-bottom: 2rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 1.5rem 1rem 1rem 1rem;
+}
+.subject-title {
+  color: var(--header-text);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
 }
 
 /* Mobile adjustments for todo section */

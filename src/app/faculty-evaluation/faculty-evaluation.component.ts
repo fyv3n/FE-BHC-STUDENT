@@ -1,22 +1,23 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
-import { MockdataComponent } from '../mockdata/mockdata.component';
+import { MockdataComponent, Teacher } from '../mockdata/mockdata.component';
 import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
 
 @Component({
-  selector: 'app-class-dashboard',
+  selector: 'app-faculty-evaluation',
   standalone: true,
   imports: [
     FormsModule,
     CommonModule,
     DatePipe,
     IconComponent,
+    RouterModule
   ],
-  templateUrl: './class-dashboard.component.html',
-  styleUrls: ['./class-dashboard.component.css'],
+  templateUrl: './faculty-evaluation.component.html',
+  styleUrls: ['./faculty-evaluation.component.css'],
   animations: [
     trigger('cardStagger', [
       transition(':enter', [
@@ -40,17 +41,17 @@ import { trigger, transition, style, animate, query, stagger } from '@angular/an
     ])
   ]
 })
-export class ClassDashboardComponent {
+export class FacultyEvaluationComponent {
   mockData = inject(MockdataComponent);
-  studentName = 'Student name';
+  studentName = 'Student name'; // Changed for faculty evaluation
   searchTerm = '';
   sidebarOpen = false;
 
-  get filteredClasses() {
-    if (!this.searchTerm.trim()) return this.mockData.classList;
-    return this.mockData.classList.filter(cls =>
-      cls.subject.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      cls.code.includes(this.searchTerm)
+  get filteredFaculty(): Teacher[] {
+    if (!this.searchTerm.trim()) return this.mockData.facultyList;
+    return this.mockData.facultyList.filter(faculty =>
+      faculty.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      faculty.id.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
 
@@ -81,7 +82,7 @@ export class ClassDashboardComponent {
   }
 
   viewSchedule(): void {
-    this.router.navigate(['/class-schedule']);
+    this.viewEvaluationGuidelines();
   }
 
   todolist(): void {
@@ -89,10 +90,15 @@ export class ClassDashboardComponent {
   }
 
   coursedashboard(code: string): void {
-    this.router.navigate(['/course-dashboard', code])
+    this.evaluateFaculty(code);
   }
 
-  faculty(): void {
-    this.router.navigate(['/faculty-evaluation']);
+  evaluateFaculty(facultyId: string): void {
+    console.log(`Navigating to evaluation for faculty ID: ${facultyId}`);
+    this.router.navigate(['/faculty-evaluation-form', facultyId]);
   }
-}
+
+  viewEvaluationGuidelines(): void {
+    console.log('Viewing evaluation guidelines');
+  }
+} 

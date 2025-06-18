@@ -1,0 +1,205 @@
+<div class="dashboard-container">
+  <!-- Persistent Sidebar for Desktop -->
+  <aside class="sidebar">
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar">
+      </div>
+      <div class="sidebar-student-name">{{ studentName }}</div>
+      <hr class="sidebar-divider" />
+    </div>
+    <nav class="sidebar-nav">
+      <a class="sidebar-link" (click)="todolist()" tabindex="0" (keydown.enter)="todolist()" (keydown.space)="todolist()">
+        <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Todo</span>
+      </a>
+      <a class="sidebar-link" [routerLink]="['/class-dashboard']" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
+        <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Classes</span>
+      </a>
+      <a class="sidebar-link active" [routerLink]="['/faculty-evaluation']" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
+        <app-icon name="user-pen" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Faculty Evaluation</span>
+      </a>
+    </nav>
+    <div class="sidebar-logout">
+      <hr>
+      <a class="sidebar-link" (click)="logout()" tabindex="0" (keydown.enter)="logout()" (keydown.space)="logout()">
+        <app-icon name="log-out" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Logout</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Sidebar Drawer Overlay (Mobile) -->
+  <div class="sidebar-overlay" *ngIf="sidebarOpen" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()"></div>
+  <!-- Sidebar Drawer (Mobile) -->
+  <aside class="sidebar sidebar-drawer" [class.open]="sidebarOpen">
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar">
+      </div>
+      <div class="sidebar-student-name">{{ studentName }}</div>
+      <hr class="sidebar-divider" />
+    </div>
+    <nav class="sidebar-nav">
+      <a class="sidebar-link" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
+        <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Todo</span>
+      </a>
+      <a class="sidebar-link" [routerLink]="['/class-dashboard']" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
+        <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Classes</span>
+      </a>
+      <a class="sidebar-link active" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()" [routerLink]="['/faculty-evaluation']">
+        <app-icon name="user-pen" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Faculty Evaluation</span>
+      </a>
+    </nav>
+    <div class="sidebar-logout">
+      <hr>
+      <a class="sidebar-link" (click)="logout()" tabindex="0" (keydown.enter)="logout()" (keydown.space)="logout()">
+        <app-icon name="log-out" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Logout</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <button class="burger-menu" (click)="toggleSidebar()" tabindex="0" (keydown.enter)="toggleSidebar()" (keydown.space)="toggleSidebar()">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#AE1039" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="top-bar-date">
+        <app-icon name="calendar" [size]="16" color="#888"></app-icon>
+        {{ currentDateTime | date: 'EEEE, MMMM d, yyyy, hh:mm:ss a' }}
+      </div>
+    </header>
+
+    <!-- Main Section - existing content wrapped -->
+    <section class="class-section">
+      <div class="container">
+          <h1>Faculty Evaluation</h1>
+
+          <div class="section" *ngIf="faculty as f">
+            <label>Class Code:</label> {{ f.id }}<br>
+            <label>Course Code/Description:</label> {{ f.courses.join(', ') }}<br>
+            <label>Name of Professor/Instructor:</label> {{ f.name }}
+          </div>
+
+          <div class="rating-scale-info">
+              <h3>RATING SCALE:</h3>
+              <p>5-All of the Time;</p>
+              <p>4-Most of the Time;</p>
+              <p>3-Sometimes;</p>
+              <p>2-Rarely;</p>
+              <p>1-Never</p>
+          </div>
+
+          <div class="section">
+            <h2>Direction</h2>
+            <p>Select the number corresponding to your choice based on the scale below. Be fair and honest with your evaluation. <strong>All items are required</strong>.</p>
+            <table>
+              <thead>
+                <tr><th>Score</th><th>Descriptive Rating</th><th>Qualitative Description</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>5</td><td>OUTSTANDING</td><td>Performance exceeded job requirements consistently</td></tr>
+                <tr><td>4</td><td>VERY SATISFACTORY</td><td>Performance met and sometimes exceeded job requirements</td></tr>
+                <tr><td>3</td><td>SATISFACTORY</td><td>Performance met job requirements</td></tr>
+                <tr><td>2</td><td>FAIR</td><td>Performance sometimes failed to meet job requirements</td></tr>
+                <tr><td>1</td><td>POOR</td><td>Performance failed to meet job requirements</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="section">
+            <h2>A. GENERAL OBSERVATIONS</h2>
+            <table>
+              <thead>
+                  <tr><th></th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1. My learning in the course is facilitated by the way the instructor organized course material to fit our needs.</td><td><input type="radio" name="qA1" value="5" required></td><td><input type="radio" name="qA1" value="4"></td><td><input type="radio" name="qA1" value="3"></td><td><input type="radio" name="qA1" value="2"></td><td><input type="radio" name="qA1" value="1"></td></tr>
+                <tr><td>2. My understanding of the course materials is ably aided by the instructor's ability to clearly communicate the course and lessons of the day.</td><td><input type="radio" name="qA2" value="5" required></td><td><input type="radio" name="qA2" value="4"></td><td><input type="radio" name="qA2" value="3"></td><td><input type="radio" name="qA2" value="2"></td><td><input type="radio" name="qA2" value="1"></td></tr>
+                <tr><td>3. I am interested in the subject matter because of the instructor's interest and enthusiasm in the subject.</td><td><input type="radio" name="qA3" value="5" required></td><td><input type="radio" name="qA3" value="4"></td><td><input type="radio" name="qA3" value="3"></td><td><input type="radio" name="qA3" value="2"></td><td><input type="radio" name="qA3" value="1"></td></tr>
+                <tr><td>4. My learning improved because of my instructor's interest and concern in my studies.</td><td><input type="radio" name="qA4" value="5" required></td><td><input type="radio" name="qA4" value="4"></td><td><input type="radio" name="qA4" value="3"></td><td><input type="radio" name="qA4" value="2"></td><td><input type="radio" name="qA4" value="1"></td></tr>
+                <tr><td>5. I learned the lessons because the instructor established major points with illustrations, applications, and/or summaries.</td><td><input type="radio" name="qA5" value="5" required></td><td><input type="radio" name="qA5" value="4"></td><td><input type="radio" name="qA5" value="3"></td><td><input type="radio" name="qA5" value="2"></td><td><input type="radio" name="qA5" value="1"></td></tr>
+                <tr><td>6. My understanding of the course content is much aided by the instructor's timely response to the questions and problems and provided individual help regarding the course content.</td><td><input type="radio" name="qA6" value="5" required></td><td><input type="radio" name="qA6" value="4"></td><td><input type="radio" name="qA6" value="3"></td><td><input type="radio" name="qA6" value="2"></td><td><input type="radio" name="qA6" value="1"></td></tr>
+                <tr><td>7. My learning is improved because the instructor allowed question and discussions when appropriate.</td><td><input type="radio" name="qA7" value="5" required></td><td><input type="radio" name="qA7" value="4"></td><td><input type="radio" name="qA7" value="3"></td><td><input type="radio" name="qA7" value="2"></td><td><input type="radio" name="qA7" value="1"></td></tr>
+                <tr><td>8. My learning is improved because the instructor encouraged students to analyze ideas and to think critically.</td><td><input type="radio" name="qA8" value="5" required></td><td><input type="radio" name="qA8" value="4"></td><td><input type="radio" name="qA8" value="3"></td><td><input type="radio" name="qA8" value="2"></td><td><input type="radio" name="qA8" value="1"></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="section">
+              <h2>B. ON SYNCHRONOUS SESSION</h2>
+              <table>
+                  <thead>
+                      <tr><th></th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th></tr>
+                  </thead>
+                  <tbody>
+                      <tr><td>1. My interest in learning is very much improved because.</td><td><input type="radio" name="qB1" value="5" required></td><td><input type="radio" name="qB1" value="4"></td><td><input type="radio" name="qB1" value="3"></td><td><input type="radio" name="qB1" value="2"></td><td><input type="radio" name="qB1" value="1"></td></tr>
+                      <tr><td>2. The instructor makes good use of the session.</td><td><input type="radio" name="qB2" value="5" required></td><td><input type="radio" name="qB2" value="4"></td><td><input type="radio" name="qB2" value="3"></td><td><input type="radio" name="qB2" value="2"></td><td><input type="radio" name="qB2" value="1"></td></tr>
+                      <tr><td>3. The instructor allows us to interact with each other during the session.</td><td><input type="radio" name="qB3" value="5" required></td><td><input type="radio" name="qB3" value="4"></td><td><input type="radio" name="qB3" value="3"></td><td><input type="radio" name="qB3" value="2"></td><td><input type="radio" name="qB3" value="1"></td></tr>
+                      <tr><td>4. Discussion questions were thought provoking.</td><td><input type="radio" name="qB4" value="5" required></td><td><input type="radio" name="qB4" value="4"></td><td><input type="radio" name="qB4" value="3"></td><td><input type="radio" name="qB4" value="2"></td><td><input type="radio" name="qB4" value="1"></td></tr>
+                      <tr><td>5. Discussions were engaging.</td><td><input type="radio" name="qB5" value="5" required></td><td><input type="radio" name="qB5" value="4"></td><td><input type="radio" name="qB5" value="3"></td><td><input type="radio" name="qB5" value="2"></td><td><input type="radio" name="qB5" value="1"></td></tr>
+                      <tr><td>6. Video sessions were meaningful and helpful.</td><td><input type="radio" name="qB6" value="5" required></td><td><input type="radio" name="qB6" value="4"></td><td><input type="radio" name="qB6" value="3"></td><td><input type="radio" name="qB6" value="2"></td><td><input type="radio" name="qB6" value="1"></td></tr>
+                  </tbody>
+              </table>
+          </div>
+
+          <div class="section">
+              <h2>C. ON ASYNCHRONOUS SESSION</h2>
+              <table>
+                  <thead>
+                      <tr><th></th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th></tr>
+                  </thead>
+                  <tbody>
+                      <tr><td>1. The materials and tasks can be accessed anytime.</td><td><input type="radio" name="qC1" value="5" required></td><td><input type="radio" name="qC1" value="4"></td><td><input type="radio" name="qC1" value="3"></td><td><input type="radio" name="qC1" value="2"></td><td><input type="radio" name="qC1" value="1"></td></tr>
+                      <tr><td>2. Directions/Instructions are clear to accomplish assigned tasks.</td><td><input type="radio" name="qC2" value="5" required></td><td><input type="radio" name="qC2" value="4"></td><td><input type="radio" name="qC2" value="3"></td><td><input type="radio" name="qC2" value="2"></td><td><input type="radio" name="qC2" value="1"></td></tr>
+                      <tr><td>3. I developed independent learning because the topics were presented interestingly and offers challenges and creativity.</td><td><input type="radio" name="qC3" value="5" required></td><td><input type="radio" name="qC3" value="4"></td><td><input type="radio" name="qC3" value="3"></td><td><input type="radio" name="qC3" value="2"></td><td><input type="radio" name="qC3" value="1"></td></tr>
+                      <tr><td>4. The class it reminded of the grading criteria when assessment activities are given.</td><td><input type="radio" name="qC4" value="5" required></td><td><input type="radio" name="qC4" value="4"></td><td><input type="radio" name="qC4" value="3"></td><td><input type="radio" name="qC4" value="2"></td><td><input type="radio" name="qC4" value="1"></td></tr>
+                      <tr><td>5. Results of tests/assignments/requirements were returned promptly within a week.</td><td><input type="radio" name="qC5" value="5" required></td><td><input type="radio" name="qC5" value="4"></td><td><input type="radio" name="qC5" value="3"></td><td><input type="radio" name="qC5" value="2"></td><td><input type="radio" name="qC5" value="1"></td></tr>
+                      <tr><td>6. Instructor shows care and kindness to students.</td><td><input type="radio" name="qC6" value="5" required></td><td><input type="radio" name="qC6" value="4"></td><td><input type="radio" name="qC6" value="3"></td><td><input type="radio" name="qC6" value="2"></td><td><input type="radio" name="qC6" value="1"></td></tr>
+                  </tbody>
+              </table>
+          </div>
+
+          <div class="section">
+            <h2>D. In the spirit of development</h2>
+            <label>1. What do you think should the faculty CONTINUE doing in class?</label>
+            <textarea></textarea>
+          </div>
+
+          <div class="section">
+            <label>2. What do you think should the faculty STOP doing in class?</label>
+            <textarea></textarea>
+          </div>
+
+          <div class="submit-section">
+            <button disabled>Submit</button>
+          </div>
+
+          <div class="footer">
+            2023 GC SMS (ver.GC-EIS v1.16.3)
+          </div>
+
+          <div class="interpretation-scale-info">
+              <h3>INTERPRETATION SCALE</h3>
+              <table>
+                  <thead>
+                      <tr><th>Mean Range</th><th>Descriptive Rating</th><th>Interpretation</th></tr>
+                  </thead>
+                  <tbody>
+                      <tr><td>1.00-1.75</td><td>1 - Never</td><td>Unsatisfactory</td></tr>
+                      <tr><td>1.76-2.50</td><td>2 - Few Times</td><td>Fairly Satisfactory</td></tr>
+                      <tr><td>3.26-4.00</td><td>4 - Often</td><td>Very Satisfactory</td></tr>
+                      <tr><td>4.01-5.00</td><td>5 - All of the Time</td><td>Outstanding</td></tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+    </section>
+  </div>
+</div>

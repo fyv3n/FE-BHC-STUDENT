@@ -1,3 +1,4 @@
+<!-- Fix attempt: Added a comment to force re-evaluation -->
 <div class="dashboard-container">
   <!-- Persistent Sidebar for Desktop -->
   <aside class="sidebar">
@@ -12,11 +13,11 @@
         <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Todo</span>
       </a>
-      <a class="sidebar-link active">
+      <a class="sidebar-link" [routerLink]="['/class-dashboard']" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
         <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Classes</span>
       </a>
-      <a class="sidebar-link" (click)="faculty()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
+      <a class="sidebar-link active" [routerLink]="['/faculty-evaluation']" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
         <app-icon name="user-pen" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Faculty Evaluation</span>
       </a>
@@ -41,15 +42,15 @@
       <hr class="sidebar-divider" />
     </div>
     <nav class="sidebar-nav">
-      <a class="sidebar-link active" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
-        <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
-        <span>Classes</span>
-      </a>
-      <a class="sidebar-link" (click)="todolist()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
+      <a class="sidebar-link" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
         <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Todo</span>
       </a>
-      <a class="sidebar-link" (click)="faculty()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
+      <a class="sidebar-link" [routerLink]="['/class-dashboard']" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
+        <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Classes</span>
+      </a>
+      <a class="sidebar-link active" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()" [routerLink]="['/faculty-evaluation']">
         <app-icon name="user-pen" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Faculty Evaluation</span>
       </a>
@@ -79,17 +80,17 @@
     <!-- Main Section -->
     <section class="class-section">
       <div class="class-header">
-        <h1>My Classroom</h1>
-        <button class="class-schedule-btn" (click)="viewSchedule()" tabindex="0" (keydown.enter)="viewSchedule()" (keydown.space)="viewSchedule()">
+        <h1>Faculty Evaluation</h1>
+        <button class="class-schedule-btn" (click)="viewEvaluationGuidelines()" tabindex="0" (keydown.enter)="viewEvaluationGuidelines()" (keydown.space)="viewEvaluationGuidelines()">
           <app-icon name="calendar" [size]="22" color="#212529"></app-icon>
-          Class Schedule
+          Evaluation Guidelines
         </button>
       </div>
-      <div class="classes-bg-text">CLASSES</div>
+      <div class="classes-bg-text">FACULTY</div>
       <div class="class-search-bar">
         <input
           type="text"
-          placeholder="Search Class..."
+          placeholder="Search Faculty..."
           [(ngModel)]="searchTerm"
         />
         <button>
@@ -97,15 +98,15 @@
         </button>
       </div>
       <div class="class-grid" @cardStagger>
-        <div class="class-card" *ngFor="let cls of filteredClasses" @fadeInUpCard>
+        <div class="class-card" *ngFor="let faculty of filteredFaculty" @fadeInUpCard>
           <div class="class-card-top">
-            <div class="class-code">Class Code: {{ cls.code }}</div>
-            <div class="class-subject">{{ cls.subject }}</div>
-            <div class="class-schedule">{{ cls.schedule }}</div>
-            <div class="class-room">{{ cls.room }}</div>
+            <div class="class-code">Faculty ID: {{ faculty.id }}</div>
+            <div class="class-subject">{{ faculty.name }}</div>
+            <div class="class-schedule">Department: {{ faculty.department }}</div>
+            <div class="class-room">Courses: {{ faculty.courses.join(', ') }}</div>
           </div>
           <div class="class-card-bottom">
-            <button class = "enter" (click)="coursedashboard(cls.code)" tabindex="0" (keydown.enter)="coursedashboard(cls.code)" (keydown.space)="coursedashboard(cls.code)">Enter ›</button>
+            <button class = "enter" (click)="evaluateFaculty(faculty.id)" tabindex="0" (keydown.enter)="evaluateFaculty(faculty.id)" (keydown.space)="evaluateFaculty(faculty.id)">Evaluate ›</button>
           </div>
         </div>
       </div>

@@ -16,8 +16,8 @@
         <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Classes</span>
       </a>
-      <a class="sidebar-link" (click)="faculty()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
-        <app-icon name="user-pen" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+      <a class="sidebar-link" (click)="facultyEval()" tabindex="0" (keydown.enter)="facultyEval()" (keydown.space)="facultyEval()">
+        <app-icon name="evaluation" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Faculty Evaluation</span>
       </a>
     </nav>
@@ -41,16 +41,16 @@
       <hr class="sidebar-divider" />
     </div>
     <nav class="sidebar-nav">
+      <a class="sidebar-link" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
+        <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+        <span>Todo</span>
+      </a>
       <a class="sidebar-link active" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
         <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Classes</span>
       </a>
-      <a class="sidebar-link" (click)="todolist()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
-        <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
-        <span>Todo</span>
-      </a>
-      <a class="sidebar-link" (click)="faculty()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
-        <app-icon name="user-pen" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
+      <a class="sidebar-link" (click)="facultyEval()" tabindex="0" (keydown.enter)="facultyEval()" (keydown.space)="facultyEval()">
+        <app-icon name="evaluation" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Faculty Evaluation</span>
       </a>
     </nav>
@@ -79,33 +79,28 @@
     <!-- Main Section -->
     <section class="class-section">
       <div class="class-header">
-        <h1>My Classroom</h1>
-        <button class="class-schedule-btn" (click)="viewSchedule()" tabindex="0" (keydown.enter)="viewSchedule()" (keydown.space)="viewSchedule()">
-          <app-icon name="calendar" [size]="22" color="#212529"></app-icon>
-          Class Schedule
-        </button>
+        <h1>Faculty Evaluation</h1>
       </div>
-      <div class="classes-bg-text">CLASSES</div>
+      <div class="classes-bg-text">FACULTY EVALUATION</div>
       <div class="class-search-bar">
         <input
           type="text"
-          placeholder="Search Class..."
+          placeholder="Search Faculty..."
           [(ngModel)]="searchTerm"
         />
         <button>
           <app-icon name="search" [size]="22" color="#FFFFFF"></app-icon>
         </button>
       </div>
-      <div class="class-grid" @cardStagger>
-        <div class="class-card" *ngFor="let cls of filteredClasses" @fadeInUpCard>
+      <div class="class-grid">
+        <div class="class-card" *ngFor="let faculty of filteredFaculty">
           <div class="class-card-top">
-            <div class="class-code">Class Code: {{ cls.code }}</div>
-            <div class="class-subject">{{ cls.subject }}</div>
-            <div class="class-schedule">{{ cls.schedule }}</div>
-            <div class="class-room">{{ cls.room }}</div>
+            <div class="class-code">Faculty ID: {{ faculty.id }}</div>
+            <div class="class-subject">{{ faculty.name }}</div>
+            <div class="class-schedule">Department: {{ faculty.department }}</div>
           </div>
           <div class="class-card-bottom">
-            <button class = "enter" (click)="coursedashboard(cls.code)" tabindex="0" (keydown.enter)="coursedashboard(cls.code)" (keydown.space)="coursedashboard(cls.code)">Enter ›</button>
+            <button class = "enter" (click)="enterFacultyEvaluation(faculty.id)" tabindex="0" (keydown.enter)="enterFacultyEvaluation(faculty.id)" (keydown.space)="enterFacultyEvaluation(faculty.id)">Evaluate ›</button>
           </div>
         </div>
       </div>

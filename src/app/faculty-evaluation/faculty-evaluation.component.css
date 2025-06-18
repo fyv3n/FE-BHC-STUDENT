@@ -1,0 +1,691 @@
+:root {
+  --maroon: #ae1039;
+  --maroon-dark: #880b17;
+  --blue: #2e3679;
+  --black: #212529;
+  --sidebar-bg: #ae1039;
+  --sidebar-text: #fff;
+  --main-bg: #f5e5c3;
+  --card-bg: #ae1039;
+  --card-bottom-bg: #fff;
+  --search-bg: #fff;
+  --search-border: #ae1039;
+  --bg-text: rgba(235, 170, 145, 0.3);
+  --header-text: #ae1039;
+  --button-bg: #ae1039;
+  --button-text: #fff;
+  --button-border: #212529;
+  --avatar-bg: #c4c4c4;
+}
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 100px;
+  background: var(--maroon);
+  color: var(--sidebar-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0 20px 0;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);  
+  min-height: 100vh;
+}
+
+.sidebar-profile {
+  display: block;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sidebar-avatar {
+  width: 64px;
+  height: 64px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px auto;
+}
+
+.sidebar-student-name {
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--sidebar-text);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: center;
+  width: 100%;
+}
+
+.sidebar-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff !important;
+  fill: #fff !important;
+  text-decoration: none;
+  font-size: 13px;
+  gap: 6px;
+  cursor: pointer;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 0;
+  transition: background 0.2s;
+}
+
+.sidebar-link.active, .sidebar-link:hover {
+  background: var(--maroon-dark);
+  border-radius: 0;
+}
+
+.sidebar-icon {
+  font-size: 28px;
+}
+
+.sidebar-logout {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.sidebar-logout hr {
+  width: 80%;
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.5);
+  margin: 18px 0 10px 0;
+}
+
+.sidebar-logout .sidebar-link {
+  font-size: 13px;
+  gap: 6px;
+  padding: 10px 0;
+}
+
+.sidebar-link,
+.sidebar-student-name,
+.sidebar-logout .sidebar-link {
+  color: #fff !important;
+  fill: #fff !important;
+}
+
+
+.sidebar-divider {
+  width: 80%;
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.5);
+  margin: 18px 0 10px 8px;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f6f6;
+  overflow-y: auto;
+}
+
+.top-bar {
+  background-color: #fff;
+  height: 80px;
+  min-height: 80px;
+  padding: 0 24px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border: none;
+  box-shadow: none;
+  border-bottom: 1.5px solid #ececec;
+  margin-bottom: 24px;
+}
+
+.top-bar-date {
+  font-size: 14px;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 400;
+}
+
+.top-bar-date svg {
+  color: #888;
+  margin-right: 2px;
+}
+
+/* Class Section */
+.class-section {
+  position: relative;
+  padding: 20px 30px;
+  flex: 1;
+}
+
+.class-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.class-header h1 {
+  color: var(--header-text);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.class-header h1::after {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: var(--maroon);
+  margin-left: 5px;
+}
+
+.class-schedule-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #fff;
+  color: #212529;
+  border: 1.5px solid #212529;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 16px;
+  font-weight: 400;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+
+.class-schedule-btn:hover {
+  background-color: #d8d8d8;
+  color: #212529;
+  border-color: #212529;
+}
+
+.classes-bg-text {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  font-size: 140px;
+  font-weight: 700;
+  color: rgba(235, 170, 145, 0.3);
+  z-index: 1;
+  letter-spacing: 10px;
+  opacity: 0.6;
+  pointer-events: none;
+  text-align: center;
+}
+
+.class-search-bar {
+  display: flex;
+  margin-bottom: 30px;
+  max-width: 200px;
+  position: relative;
+  z-index: 10;
+}
+
+.class-search-bar input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  font-size: 13px;
+  background-color: white;
+}
+
+.class-search-bar button {
+  background-color: var(--maroon);
+  color: white;
+  border: 1px solid var(--maroon);
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.class-search-bar button:hover {
+  background-color: var(--maroon-dark);
+}
+
+/* Class Grid */
+.class-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Remove the .class-grid::after rule to fix mobile stacking */
+.class-grid::after {
+  display: none !important;
+  content: none !important;
+}
+
+.class-card {
+  background: transparent;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(33, 37, 41, 0.08);
+  border: none;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 180px;
+  transition: box-shadow 0.2s;
+  overflow: hidden;
+}
+
+.class-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.class-card-top {
+  background-image: radial-gradient(circle at 77% 43%, rgba(168, 168, 168, 0.04) 0%, rgba(168, 168, 168, 0.04) 50%, rgba(10, 10, 10, 0.04) 50%, rgba(10, 10, 10, 0.04) 100%), 
+                  radial-gradient(circle at 33% 65%, rgba(248, 248, 248, 0.04) 0%, rgba(248, 248, 248, 0.04) 50%, rgba(228, 228, 228, 0.04) 50%, rgba(228, 228, 228, 0.04) 100%), 
+                  radial-gradient(circle at 92% 79%, rgba(152, 152, 152, 0.04) 0%, rgba(152, 152, 152, 0.04) 50%, rgba(28, 28, 28, 0.04) 50%, rgba(28, 28, 28, 0.04) 100%), 
+                  radial-gradient(circle at 91% 13%, rgba(41, 41, 41, 0.04) 0%, rgba(41, 41, 41, 0.04) 50%, rgba(214, 214, 214, 0.04) 50%, rgba(214, 214, 214, 0.04) 100%), 
+                  linear-gradient(90deg, var(--maroon), rgb(9, 102, 168));
+  color: #fff;
+  padding: 20px 20px 16px 20px;
+  position: relative;
+  overflow: hidden;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.class-card-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  background-image: url('/assets/BHE-LOGO.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.class-code, .class-subject, .class-schedule, .class-room {
+  position: relative;
+  z-index: 2;
+}
+
+.class-code {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.class-subject {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.class-schedule, .class-room {
+  font-size: 13px;
+  color: #fff;
+  margin-bottom: 2px;
+  font-weight: 400;
+}
+
+.class-card-bottom {
+  background: #fff;
+  padding: 10px 20px 10px 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.class-card-bottom button {
+  background: #fff;
+  color: #212529;
+  border: 2px solid #212529;
+  border-radius: 6px;
+  padding: 8px 28px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 1.5px 4px rgba(33,37,41,0.06);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.class-card-bottom button:hover {
+  background-color: #d8d8d8;
+  color: #212529;
+  border: 2px solid #212529;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+  .sidebar {
+    display: none !important;
+  }
+  .sidebar-drawer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    width: 240px;
+    min-width: 0;
+    height: 100vh;
+    background: var(--maroon);
+    color: var(--sidebar-text);
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+    box-shadow: 2px 0 16px rgba(33,37,41,0.18);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1200;
+    padding: 32px 0 20px 0;
+  }
+  .sidebar-profile {
+    display: block !important;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .sidebar-nav {
+    flex-direction: column !important;
+    gap: 0;
+    align-items: center;
+    width: 100%;
+  }
+  .sidebar-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff !important;
+    fill: #fff !important;
+    text-decoration: none;
+    font-size: 13px;
+    gap: 6px;
+    cursor: pointer;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 0;
+    transition: background 0.2s;
+    background: transparent !important;
+  }
+  .sidebar-link.active, .sidebar-link:hover {
+    background: var(--maroon-dark) !important;
+    color: #fff !important;
+    fill: #fff !important;
+  }
+
+  .sidebar-logout {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .sidebar-divider {
+    display: block !important;
+  }
+  .main-content {
+    padding: 0;
+  }
+  .class-section {
+    padding: 20px 15px;
+  }
+  .classes-bg-text {
+    font-size: 80px;
+    top: 40px;
+  }
+  .class-search-bar {
+    max-width: 100%;
+  }
+  .class-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+  .class-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin-bottom: 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(33, 37, 41, 0.08);
+    overflow: hidden;
+  }
+  .class-card-top {
+    padding: 16px 16px 12px 16px !important;
+  }
+  .class-card-bottom {
+    padding: 10px 16px 10px 0 !important;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+}
+
+@media (max-width: 700px) {
+  .dashboard-container {
+    flex-direction: column;
+    height: auto;
+  }
+  .sidebar-nav {
+    flex-direction: column !important;
+    gap: 0 !important;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .sidebar-link {
+    font-size: 13px;
+    padding: 10px 0;
+    border-radius: 0;
+    gap: 6px;
+    color: #fff !important;
+    fill: #fff !important;
+    background: transparent !important;
+  }
+  .sidebar-link.active, .sidebar-link:hover {
+    background: var(--maroon-dark) !important;
+    color: #fff !important;
+    fill: #fff !important;
+  }
+
+  .sidebar-profile,
+  .sidebar-divider {
+    display: block !important;
+  }
+  .sidebar-logout {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .main-content {
+    padding: 0;
+    margin-top: 0 !important;
+  }
+  .top-bar {
+    height: 56px;
+    min-height: 56px;
+    padding: 0 8px 0 0;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start !important;
+    gap: 8px;
+  }
+  .burger-menu {
+    margin-right: 8px;
+  }
+  .top-bar-date {
+    margin-left: 8px;
+  }
+  .class-section {
+    padding: 12px 4px 0 4px;
+  }
+  .class-header h1 {
+    font-size: 18px;
+  }
+  .class-schedule-btn {
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 6px;
+  }
+  .classes-bg-text {
+    font-size: 36px;
+    top: 20px;
+    left: 0;
+    right: 0;
+  }
+  .class-search-bar {
+    max-width: 100%;
+    margin-bottom: 16px;
+  }
+  .class-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+  .class-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin-bottom: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(33, 37, 41, 0.08);
+    overflow: hidden;
+  }
+  .class-card-top {
+    padding: 12px 12px 8px 12px !important;
+  }
+  .class-card-bottom {
+    padding: 8px 12px 8px 0 !important;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+}
+
+/* Sidebar Drawer Overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(33, 37, 41, 0.25);
+  z-index: 1100;
+  display: block;
+}
+
+/* Sidebar Drawer (mobile) */
+.sidebar-drawer {
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 240px;
+  max-width: 80vw;
+  background: var(--maroon);
+  color: var(--sidebar-text);
+  z-index: 1200;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+  box-shadow: 2px 0 16px rgba(33,37,41,0.18);
+  transform: translateX(-100%);
+  display: flex;
+  flex-direction: column;
+  padding: 32px 0 20px 0;
+}
+.sidebar-drawer.open {
+  transform: translateX(0);
+}
+
+/* Burger Menu Button */
+.burger-menu {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+}
+
+@media (min-width: 901px) {
+  .burger-menu {
+    display: none !important;
+  }
+  .sidebar {
+    display: flex !important;
+  }
+  .sidebar-drawer,
+  .sidebar-overlay {
+    display: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    display: none !important;
+  }
+  .burger-menu {
+    display: flex !important;
+  }
+  .sidebar-drawer {
+    display: flex !important;
+  }
+}
+
+/* Essentials font and color for sidebar */
+.sidebar, .sidebar-drawer {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: var(--maroon);
+  color: var(--sidebar-text);
+}
+
+/* Add styles for faculty evaluation component here */

@@ -80,4 +80,8 @@ export class ActivityDetailsComponent implements OnInit {
       this.newComment = '';
     }
   }
+
+  facultyEvaluation(): void {
+    this.router.navigate(['/faculty-evaluation']);
+  }
 }

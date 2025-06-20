@@ -16,6 +16,10 @@
         <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Classes"></app-icon>
         <span>Classes</span>
       </a>
+      <a class="sidebar-link" (click)="facultyEvaluation()" tabindex="0" (keydown.enter)="facultyEvaluation()" (keydown.space)="facultyEvaluation()">
+        <app-icon name="user-pen" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Faculty Evaluation"></app-icon>
+        <span>Faculty Evaluation</span>
+      </a>
     </nav>
     <div class="sidebar-logout">
       <hr>
@@ -45,6 +49,10 @@
       <a class="sidebar-link active" (click)="classDashboard(); closeSidebar()" tabindex="0" (keydown.enter)="classDashboard(); closeSidebar()" (keydown.space)="classDashboard(); closeSidebar()">
         <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Classes"></app-icon>
         <span>Classes</span>
+      </a>
+      <a class="sidebar-link" (click)="facultyEvaluation(); closeSidebar()" tabindex="0" (keydown.enter)="facultyEvaluation(); closeSidebar()" (keydown.space)="facultyEvaluation(); closeSidebar()">
+        <app-icon name="user-pen" class="sidebar-icon" [size]="28" color="#FFFFFF" alt="Faculty Evaluation"></app-icon>
+        <span>Faculty Evaluation</span>
       </a>
     </nav>
     <div class="sidebar-logout">

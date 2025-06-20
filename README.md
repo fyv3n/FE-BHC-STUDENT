@@ -1,4 +1,4 @@
-# FE-BHC-STUDENT
+# Student Dashboard Frontend for Bataan Heroes College 
 
 A modern Angular-based student dashboard for Bataan Heroes College.
 

@@ -260,12 +260,11 @@ body {
 
 .class-section {
   position: relative;
-  padding: 20px 30px;
+  padding: 1rem;
   flex: 1;
 }
 
 .container {
-    max-width: 900px;
     margin: 20px auto;
     background-color: #ffffff;
     padding: 30px;

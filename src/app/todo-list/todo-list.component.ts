@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
 import { FormsModule } from '@angular/forms';
-import { MockdataComponent, Activity } from '../mockdata/mockdata.component';
+import { MockdataComponent } from '../mockdata/mockdata.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -21,28 +21,16 @@ export class TodoListComponent implements OnInit {
   studentName = 'Student Name'; // Replace with actual student name
   sidebarOpen = false;
   currentDateTime: Date = new Date();
-  activities: Activity[] = [];
-  groupedActivities: { [subject: string]: Activity[] } = {};
+  facultyEvaluationTodos: any[] = [];
   private router = inject(Router);
   private mock = inject(MockdataComponent);
 
   ngOnInit(): void {
-    this.activities = this.mock.activities;
-    this.groupedActivities = this.groupActivitiesBySubject(this.activities);
+    this.facultyEvaluationTodos = this.mock.facultyEvaluationTodos.filter(f => !f.evaluated);
     // Update time every second
     setInterval(() => {
       this.currentDateTime = new Date();
     }, 1000);
-  }
-
-  groupActivitiesBySubject(activities: Activity[]): { [subject: string]: Activity[] } {
-    return activities.reduce((groups, activity) => {
-      if (!groups[activity.subject]) {
-        groups[activity.subject] = [];
-      }
-      groups[activity.subject].push(activity);
-      return groups;
-    }, {} as { [subject: string]: Activity[] });
   }
 
   toggleSidebar(): void {
@@ -53,17 +41,10 @@ export class TodoListComponent implements OnInit {
     this.sidebarOpen = false;
   }
 
-  classes(): void {
-    this.router.navigate(['/class-dashboard']);
-  }
 
   logout(): void {
     // Add logout logic here
     this.router.navigate(['/login']);
-  }
-
-  goToActivityDetails(activity: Activity): void {
-    this.router.navigate(['/activity', activity.id]);
   }
 
   facultyEvaluation(): void {

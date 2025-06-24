@@ -404,6 +404,25 @@ body {
   border: 2px solid #212529;
 }
 
+/* Faded/gray style for completed evaluations */
+.faculty-done {
+  background: #e0e0e0 !important;
+  opacity: 0.7;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.faculty-done .done {
+  background: #bdbdbd !important;
+  color: #888 !important;
+  cursor: not-allowed !important;
+  border: none;
+}
+
+.faculty-done .done:hover {
+  background: #bdbdbd !important;
+}
+
 /* Responsive adjustments */
 @media (max-width: 900px) {
   .dashboard-container {

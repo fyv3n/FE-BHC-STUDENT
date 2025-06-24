@@ -24,32 +24,6 @@
   margin-right: 0;
 }
 
-/* Background image with low opacity */
-.info-panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url('/assets/background.jpg') center center/cover no-repeat;
-  opacity: 0.10; /* Faint image */
-  z-index: 0;
-}
-
-/* Gradient overlay */
-.info-panel::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #b92b27 0%, #1565c0 100%);
-  opacity: 0.98; /* Strong gradient, but lets image show through */
-  z-index: 1;
-}
-
-/* Ensure content is above the backgrounds */
-.info-panel > * {
-  position: relative;
-  z-index: 2;
-}
-
 .college-header {
   display: flex;
   align-items: center;
@@ -250,7 +224,6 @@
     top: 0;
     z-index: 10;
     background: linear-gradient(135deg, #b92b27 0%, #1565c0 100%);
-    /* Optionally add a slight box-shadow for separation */
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
 }

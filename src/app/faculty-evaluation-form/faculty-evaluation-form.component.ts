@@ -51,4 +51,15 @@ export class FacultyEvaluationFormComponent implements OnInit {
   logout(): void {
     this.router.navigate(['/login']);
   }
-} 
+
+  submitEvaluation(): void {
+    if (!this.faculty) return;
+    // Find and mark as evaluated in the mock To-Do list
+    const todo = this.mockdataComponent.facultyEvaluationTodos.find(f => f.id === this.faculty!.id);
+    if (todo) {
+      todo.evaluated = true;
+    }
+    // Navigate back to To-Do list
+    this.router.navigate(['/todolist']);
+  }
+}

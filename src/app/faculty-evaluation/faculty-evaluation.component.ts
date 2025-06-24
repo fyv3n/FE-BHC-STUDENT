@@ -101,4 +101,10 @@ export class FacultyEvaluationComponent {
   viewEvaluationGuidelines(): void {
     console.log('Viewing evaluation guidelines');
   }
-} 
+
+  // Returns true if the faculty has been evaluated (using mock data)
+  isFacultyEvaluated(facultyId: string): boolean {
+    const todo = this.mockData.facultyEvaluationTodos.find(f => f.id === facultyId);
+    return !!todo && todo.evaluated;
+  }
+}

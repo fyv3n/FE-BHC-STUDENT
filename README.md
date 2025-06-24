@@ -9,9 +9,6 @@ A modern Angular-based student dashboard for Bataan Heroes College.
 4. [Project Structure](#project-structure)
 5. [Data Source](#data-source)
 6. [Component Details](#component-details)
-    - [Class Dashboard](#class-dashboard)
-    - [Course Dashboard](#course-dashboard)
-    - [Class Schedule](#class-schedule)
     - [Faculty Evaluation](#faculty-evaluation)
     - [To-Do List](#to-do-list)
     - [Login](#login)
@@ -21,13 +18,11 @@ A modern Angular-based student dashboard for Bataan Heroes College.
 ---
 
 ## Overview
-A student dashboard web app for BHC, featuring class management, activity tracking, and faculty evaluation, built with Angular and modern UI principles.
+A student dashboard web app for BHC, featuring faculty evaluation and a to-do list, built with Angular and modern UI principles.
 
 ## Features
 - Responsive sidebar navigation
-- Activities grouped by subject
 - Faculty evaluation forms
-- Activity details and submission
 - Modern UI with custom icons
 
 ## Getting Started
@@ -40,7 +35,7 @@ A student dashboard web app for BHC, featuring class management, activity tracki
    npm start
    ```
 3. **Open in browser:**
-   Visit `http://localhost:4200`
+   Visit `http://localhost:4200/`
 
 ## Project Structure
 ```
@@ -59,26 +54,11 @@ src/
 ## Data Source
 All data is provided by mock data components for demonstration purposes, but the structure is ready for integration with real backend APIs.
 
-- **Class Dashboard:** Class data from `MockdataComponent`.
-- **Course Dashboard:** Class info, activities, resources, students, and teacher from `MockdataComponent`.
-- **Class Schedule:** Schedule from `classList` in mock data.
 - **Faculty Evaluation:** Faculty from `facultyList` in mock data; evaluation form is static.
 - **To-Do List:** Activities from mock data, grouped by subject.
 - **Login:** No backend authentication; navigation only.
 
 ## Component Details
-
-### Class Dashboard
-Provides an overview of all enrolled subjects as cards. Features search, quick navigation, and a responsive grid. Example subjects: CS Thesis Writing (LAB), Math 101, Physics 201, English Literature, History 101.
-
-### Course Dashboard
-A subject-specific hub with three tabs:
-- **Class Feed:** Announcements, posts, and discussions.
-- **Activities/Resources:** List of activities and resources for the subject.
-- **Student List:** Professor and enrolled students.
-
-### Class Schedule
-Weekly timetable view. Each day shows scheduled classes with subject, time, and room. If no class, a message is shown.
 
 ### Faculty Evaluation
 Students select a faculty member to evaluate, then fill out a form with ratings and open feedback. All questions are required. Data is static for demo.

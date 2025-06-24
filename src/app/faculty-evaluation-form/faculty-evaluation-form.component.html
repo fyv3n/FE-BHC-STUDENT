@@ -12,10 +12,6 @@
         <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Todo</span>
       </a>
-      <a class="sidebar-link" [routerLink]="['/class-dashboard']" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
-        <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
-        <span>Classes</span>
-      </a>
       <a class="sidebar-link active" [routerLink]="['/faculty-evaluation']" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
         <app-icon name="user-pen" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Faculty Evaluation</span>
@@ -44,10 +40,6 @@
       <a class="sidebar-link" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
         <app-icon name="todoicon" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
         <span>Todo</span>
-      </a>
-      <a class="sidebar-link" [routerLink]="['/class-dashboard']" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()">
-        <app-icon name="classes" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
-        <span>Classes</span>
       </a>
       <a class="sidebar-link active" (click)="closeSidebar()" tabindex="0" (keydown.enter)="closeSidebar()" (keydown.space)="closeSidebar()" [routerLink]="['/faculty-evaluation']">
         <app-icon name="user-pen" class="sidebar-icon" [size]="28" color="#FFFFFF"></app-icon>
@@ -177,7 +169,7 @@
           </div>
 
           <div class="submit-section">
-            <button disabled>Submit</button>
+            <button (click)="submitEvaluation()">Submit</button>
           </div>
 
           <div class="footer">

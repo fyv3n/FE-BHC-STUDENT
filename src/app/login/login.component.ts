@@ -30,6 +30,6 @@ export class LoginComponent {
 
   onLogin(event: Event) {
     event.preventDefault();
-    this.router.navigate(['/class-dashboard']);
+    this.router.navigate(['/faculty-evaluation']);
   }
 }

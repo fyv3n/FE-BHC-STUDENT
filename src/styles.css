@@ -42,7 +42,7 @@ html, body {
 
 /* Login info panel background image and gradient overlay (global, for Angular encapsulation) */
 .info-panel {
-  background: var(--maroon);
+  background: var(--maroon-dark);
   position: relative;
   overflow: hidden;
 }

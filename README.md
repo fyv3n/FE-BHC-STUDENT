@@ -18,10 +18,9 @@ A modern Angular-based student dashboard for Bataan Heroes College.
 ---
 
 ## Overview
-A student dashboard web app for BHC, featuring faculty evaluation and a to-do list, built with Angular and modern UI principles.
+A student dashboard web app for BHC, featuring faculty evaluation and a to-do list for remaining faculty evaluations, built with Angular and modern UI principles.
 
 ## Features
-- Responsive sidebar navigation
 - Faculty evaluation forms
 - Modern UI with custom icons
 
@@ -55,7 +54,7 @@ src/
 All data is provided by mock data components for demonstration purposes, but the structure is ready for integration with real backend APIs.
 
 - **Faculty Evaluation:** Faculty from `facultyList` in mock data; evaluation form is static.
-- **To-Do List:** Activities from mock data, grouped by subject.
+- **To-Do List:** To-do list for remaining faculty evaluations.
 - **Login:** No backend authentication; navigation only.
 
 ## Component Details
@@ -64,7 +63,7 @@ All data is provided by mock data components for demonstration purposes, but the
 Students select a faculty member to evaluate, then fill out a form with ratings and open feedback. All questions are required. Data is static for demo.
 
 ### To-Do List
-Activities grouped by subject, showing title, due date, score, status, and navigation to details. All activities are under "CS Thesis Writing (LAB)" for showcase.
+Faculty Evaluations to-do list.
 
 ### Login
 Two-panel layout with college branding and a login form. Password visibility toggle. No real authentication; login navigates to dashboard.

@@ -18,11 +18,9 @@ export class FacultyEvaluationFormComponent implements OnInit {
   private router = inject(Router);
 
   faculty: Teacher | undefined;
-  studentName: string = 'Student Name';
-  sidebarOpen: boolean = false;
-  currentDateTime: Date = new Date();
-
-  constructor() { }
+  studentName = 'Student Name';
+  sidebarOpen = false;
+  currentDateTime = new Date();
 
   ngOnInit(): void {
     const facultyId = this.route.snapshot.paramMap.get('id');

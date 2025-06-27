@@ -74,8 +74,8 @@
           <h1>Faculty Evaluation</h1>
 
           <div class="section" *ngIf="faculty as f">
-            <label>Class Code:</label> {{ f.id }}<br>
-            <label>Name of Professor/Instructor:</label> {{ f.name }}
+            <span>Class Code:</span> {{ f.id }}<br>
+            <span>Name of Professor/Instructor:</span> {{ f.name }}
           </div>
 
           <div class="rating-scale-info">
@@ -159,13 +159,13 @@
 
           <div class="section">
             <h2>D. In the spirit of development</h2>
-            <label>1. What do you think should the faculty CONTINUE doing in class?</label>
-            <textarea></textarea>
+            <label for="continueInput">1. What do you think should the faculty CONTINUE doing in class?</label>
+            <textarea id="continueInput"></textarea>
           </div>
 
           <div class="section">
-            <label>2. What do you think should the faculty STOP doing in class?</label>
-            <textarea></textarea>
+            <label for="stopInput">2. What do you think should the faculty STOP doing in class?</label>
+            <textarea id="stopInput"></textarea>
           </div>
 
           <div class="submit-section">

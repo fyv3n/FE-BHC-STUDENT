@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
 import { FormsModule } from '@angular/forms';
-import { MockdataComponent } from '../mockdata/mockdata.component';
+import { MockdataComponent, FacultyTodo } from '../mockdata/mockdata.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -21,7 +21,7 @@ export class TodoListComponent implements OnInit {
   studentName = 'Student Name'; // Replace with actual student name
   sidebarOpen = false;
   currentDateTime: Date = new Date();
-  facultyEvaluationTodos: any[] = [];
+  facultyEvaluationTodos: FacultyTodo[] = [];
   private router = inject(Router);
   private mock = inject(MockdataComponent);
 

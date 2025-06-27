@@ -1,0 +1,9 @@
+COLOR PALLET
+red/maroon = AE1039 darker = 880B17
+gradient = blue = 2E3679 maroon/red = AE1039
+black color = 212529  (please dont use 000000, masakit sa mata)
+background color if not white = F8E2AE
+
+FONTS
+Poppins
+Font Weight = 700 (heading) 400 (body)

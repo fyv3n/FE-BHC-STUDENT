@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
-import { FacultyEvaluationComponent } from './faculty-evaluation/faculty-evaluation.component';
-import { FacultyEvaluationFormComponent } from './faculty-evaluation-form/faculty-evaluation-form.component';
+import { LoginComponent } from './pages/login/login.component';
+import { TodoListComponent } from './pages/todo-list/todo-list.component';
+import { FacultyEvaluationComponent } from './pages/faculty-evaluation/faculty-evaluation.component';
+import { FacultyEvaluationFormComponent } from './pages/faculty-evaluation-form/faculty-evaluation-form.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },

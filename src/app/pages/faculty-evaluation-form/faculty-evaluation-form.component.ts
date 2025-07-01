@@ -1,9 +1,9 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { MockdataComponent, Teacher } from '../mockdata/mockdata.component';
+import { MockdataComponent,Teacher } from '../../components/mockdata/mockdata.component';
 import { FormsModule } from '@angular/forms';
-import { IconComponent } from '../icon/icon.component';
+import { IconComponent } from '../../components/icon/icon.component';
 
 @Component({
   selector: 'app-faculty-evaluation-form',

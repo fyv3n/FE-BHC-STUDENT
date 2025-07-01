@@ -1,9 +1,9 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
-import { IconComponent } from '../icon/icon.component';
+import { IconComponent } from '../../components/icon/icon.component';
 import { FormsModule } from '@angular/forms';
-import { MockdataComponent, FacultyTodo } from '../mockdata/mockdata.component';
+import { MockdataComponent, FacultyTodo } from '../../components/mockdata/mockdata.component';
 
 @Component({
   selector: 'app-todo-list',

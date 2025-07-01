@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { IconComponent } from '../icon/icon.component';
+import { IconComponent } from '../../components/icon/icon.component';
 import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({

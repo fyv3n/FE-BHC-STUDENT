@@ -2,8 +2,8 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
-import { IconComponent } from '../icon/icon.component';
-import { MockdataComponent, Teacher } from '../mockdata/mockdata.component';
+import { IconComponent } from '../../components/icon/icon.component';
+import { MockdataComponent, Teacher } from '../../components/mockdata/mockdata.component';
 import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
 
 @Component({

@@ -13,7 +13,7 @@ export interface Teacher {
 export interface FacultyTodo {
   id: string;
   name: string;
-  subject: string; // Added subject field
+  subject: string; 
   evaluated: boolean;
 }
 

@@ -13,6 +13,7 @@ export interface Teacher {
 export interface FacultyTodo {
   id: string;
   name: string;
+  subject: string; // Added subject field
   evaluated: boolean;
 }
 
@@ -38,10 +39,10 @@ export class MockdataComponent {
 
   // --- Faculty Evaluation To-Do List ---
   facultyEvaluationTodos: FacultyTodo[] = [
-    { id: 'T001', name: 'Dr. Sarah Anderson', evaluated: false },
-    { id: 'T002', name: 'Prof. Michael Lee', evaluated: false },
-    { id: 'T003', name: 'Dr. Emily Chen', evaluated: false },
-    { id: 'T004', name: 'Prof. David Kim', evaluated: false },
-    { id: 'T005', name: 'Dr. Maria Garcia', evaluated: false }
+    { id: 'T001', name: 'Dr. Sarah Anderson', subject: 'Computer Science', evaluated: false },
+    { id: 'T002', name: 'Prof. Michael Lee', subject: 'Mathematics', evaluated: false },
+    { id: 'T003', name: 'Dr. Emily Chen', subject: 'Physics', evaluated: false },
+    { id: 'T004', name: 'Prof. David Kim', subject: 'History', evaluated: false },
+    { id: 'T005', name: 'Dr. Maria Garcia', subject: 'Biology', evaluated: false }
   ];
 }

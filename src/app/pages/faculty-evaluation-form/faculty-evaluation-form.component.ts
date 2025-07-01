@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MockdataComponent,Teacher } from '../../components/mockdata/mockdata.component';
 import { FormsModule } from '@angular/forms';
 import { IconComponent } from '../../components/icon/icon.component';
+import { EvalCaptureService } from '../../service/eval.capture.service';
 
 @Component({
   selector: 'app-faculty-evaluation-form',
@@ -16,6 +17,8 @@ export class FacultyEvaluationFormComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private mockdataComponent = inject(MockdataComponent);
   private router = inject(Router);
+  private evalCaptureService = inject(EvalCaptureService);
+
 
   faculty: Teacher | undefined;
   studentName = 'Student Name';
@@ -52,12 +55,38 @@ export class FacultyEvaluationFormComponent implements OnInit {
 
   submitEvaluation(): void {
     if (!this.faculty) return;
-    // Find and mark as evaluated in the mock To-Do list
-    const todo = this.mockdataComponent.facultyEvaluationTodos.find(f => f.id === this.faculty!.id);
-    if (todo) {
-      todo.evaluated = true;
+
+    const formData: any = {
+      facultyId: this.faculty.id,
+      facultyName: this.faculty.name,
+      timestamp: new Date().toISOString(),
+      responses: {},
+      comments: {
+        continue: (document.getElementById('continueInput') as HTMLTextAreaElement)?.value || '',
+        stop: (document.getElementById('stopInput') as HTMLTextAreaElement)?.value || ''
+      }
+    };
+
+    const questionNames = [
+      'qA1', 'qA2', 'qA3', 'qA4', 'qA5', 'qA6', 'qA7', 'qA8',
+      'qB1', 'qB2', 'qB3', 'qB4', 'qB5', 'qB6',
+      'qC1', 'qC2', 'qC3', 'qC4', 'qC5', 'qC6'
+    ];
+
+    for (const name of questionNames) {
+      const selected = (document.querySelector(`input[name="${name}"]:checked`) as HTMLInputElement);
+      formData.responses[name] = selected?.value || null;
     }
-    // Navigate back to To-Do list
+    
+    // Send to capture service
+    this.evalCaptureService.capture(formData);
+
+    // Mark as evaluated in mock
+    const todo = this.mockdataComponent.facultyEvaluationTodos.find(f => f.id === this.faculty!.id);
+    if (todo) todo.evaluated = true;
+
+    // Go back
     this.router.navigate(['/todolist']);
   }
+
 }
